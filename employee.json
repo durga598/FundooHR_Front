@@ -1,0 +1,56 @@
+ {"employeeList":[
+  {     "engineerId":"427188EI",
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876543210",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg",
+        "bL_Start_Date": "2 March 2016",
+        "company_Start_Date": "4 June 2016",
+        "company_Leave_Date": "15 December 2016",
+        "leaves_Taken": "4"
+    },
+    {
+        "engineerId":"2",
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876543210",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg",
+        "bL_Start_Date": "2 March 2016",
+        "company_Start_Date": "4 June 2016",
+        "company_Leave_Date": "15 December 2016",
+        "leaves_Taken": "4"
+        
+    },
+    {
+         "engineerId":3,
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876543210",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg",
+        "bL_Start_Date": "2 March 2016",
+        "company_Start_Date": "4 June 2016",
+        "company_Leave_Date": "15 December 2016",
+        "leaves_Taken": "4"
+    },
+    {
+        "engineerId":4,
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876543210",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg",
+        "bL_Start_Date": "2 March 2016",
+        "company_Start_Date": "4 June 2016",
+        "company_Leave_Date": "15 December 2016",
+        "leaves_Taken": "4"
+    }
+
+ ]
+}

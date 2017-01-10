@@ -1,0 +1,91 @@
+<div class="container-fluid" id="main">
+    <div class="row" id="profiletable">
+        <div class="col-xs-12 col-lg-3 col-md-3">
+            <img ng-src="{{empdetails.image}}" alt="{{empdetails.employeeName}}" class="img1 image-responsive" />
+        </div>
+        <div class="col-lg-9 col-md-9 col-xs-12" id="profilehead">
+            <div>
+                <h4 style="color:#3B5372;font-weight:bold;font-family:Ionicons;font-size:20px">
+                    {{empdetails.employeeName}}</h4>
+                <h4>
+                    <span style="color:#3B5372;font-weight:bold; ">Id</span> {{empdetails.engineerId}}
+                </h4>
+            </div>
+            <span id="empInfo">
+            <table style="border:0px;border-right:solid 1px #3B5372"  id="profile">
+
+                <tr>
+                    <td>Status</td>
+                    <td>{{empdetails.employeeStatus}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Company</td>
+                    <td>{{empdetails.company}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Mobile</td>
+                    <td>{{empdetails.mobile}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Emailid</td>
+                    <td>{{empdetails.emailId}}</td>
+
+                </tr>
+            </table>
+             </span>
+            <span id="empDetails">    
+         <table id="profile" style="height: auto;width: 400px;">
+
+                <tr>
+                    <td>BL Start Date</td>
+                    <td>{{empdetails.bL_Start_Date}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Company Start Date</td>
+                    <td>{{empdetails.company_Start_Date}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Company Leave Date</td>
+                    <td>{{empdetails.company_Leave_Date}}</td>
+
+                </tr>
+                <tr>
+                    <td style="color:#3B5372">Leaves Taken</td>
+                    <td>{{empdetails.leaves_Taken}}</td>
+
+                </tr>
+            </table>
+         </span>
+        </div>
+    </div>  
+    <div class="col-md-12 col-lg-4 col-xs-12" id="left-sidebar">
+        <ul class="sidebar-nav" style="list-style:none;" id="sidepadding">
+            <li ui-sref-active="active">
+                <div><a class="anchor" ui-sref=".Attendence"><span><img ng-src="images/.png"></img></span><b>Attendence</b></a></div>
+            </li>
+            <li ui-sref-active="active">
+                <div><a class="anchor"><span><img ng-src="images/face - material.png"></img></span><b>Personal</b></a></div>
+            </li>
+            <li ui-sref-active="active">
+                <div><a class="anchor"><span><img ng-src="images/art_track - material.png"></img></span><b>Profile</b></a></div>
+            </li>
+            <li ui-sref-active="active">
+                <div><a class="anchor" href="#"><span><img ng-src="images/Group.png"></img></span><b>HRData</b></a></div>
+            </li>
+            <li ui-sref-active="active">
+                <div><a class="anchor" href="#"><span><img ng-src="images/ion-card - Ionicons.png"></img></span><b>Bank</b></a></div>
+            </li>
+            <li ui-sref-active="active">
+                <div><a class="anchor" href="#"><span><img ng-src="images/ion-android-compass - Ionicons.png"></img></span><b>TrackingSheet</b></a></div>
+            </li>
+        </ul>
+    </div>
+    <div id="engView">
+        <ui-view> </ui-view>
+    </div>
+</div>

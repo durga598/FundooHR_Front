@@ -1,0 +1,14 @@
+<md-dialog aria-label="Test">
+    <div layout-padding layout="column">
+        <md-input-container>
+            <label>In Time</label>
+            <input type="time" ng-model="punchIn">
+        </md-input-container>
+        <md-input-container>
+            <label>Out Time</label>
+            <input type="time" ng-model="punchOut">
+        </md-input-container>
+        <md-button ng-click="save()" class="md-primary">Save</md-button>
+        <md-button ng-click="close()" class="md-primary">Close</md-button>
+    </div>
+</md-dialog>

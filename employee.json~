@@ -1,0 +1,39 @@
+ {"employeeList":[
+  {     "engineerId":"427188EI",
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876000013",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg"
+    },
+    {
+        "engineerId":"2",
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876000013",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg"
+    },
+    {
+         "engineerId":3,
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876000013",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg"
+    },
+    {
+        "engineerId":4,
+        "employeeName": "Abcde EfghI",
+        "employeeStatus": "Internship",
+        "company": "BridgeLabz",
+        "mobile": "9876000013",
+        "emailId": "abcdefghi@bridgelabz.com",
+        "image": "images/emp2.jpg"
+    }
+
+ ]
+}

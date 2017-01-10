@@ -1,0 +1,33 @@
+<div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-xs-8  col-md-offset-4 col-sm-offset-3  ">
+            <div class="card" id="login-card">
+                <div class="login-box">
+                    <img src="images/logo.png" />
+                    <div class="login">
+                        <div>Login</div>
+                        <form name="Form" method="post" ng-submit="login()">
+                            <md-input-container class="md-block" id="input1">
+                                <label>Email</label>
+                                <input type="text" name="email" ng-model="user.emailId" required="" />
+
+                            </md-input-container>
+                            <md-input-container class="md-block" id="input2">
+                                <label>Password</label>
+                                <input type="password" name="password" ng-model="user.password" required="" />
+                                <div ng-messages="Form.password.$error" role="alert" multiple="">
+
+                                </div>
+                            </md-input-container>
+                            <button ng-disabled="!Form.$valid" type="submit" class="md-raised"> Login </button>
+                            <div><span class="text-danger">{{ error }}</span></div>
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

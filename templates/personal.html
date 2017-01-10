@@ -1,0 +1,61 @@
+<div ng-controller='PersonalCtrl' id="personalCtrl">
+<form editable-form name="tableform" onaftersave="saveTable()" id="formsize">
+        <table class="table-condensed" ng-repeat="user in users" id="personalData">
+                <tr>
+                    <td>ID</td>
+                     <td editable-text="user.engineerId" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.engineerId || 'empty'}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td editable-text="user.emailId" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.emailId || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td editable-text="user.mobile" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.mobile || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td editable-text="user.dateOfBirth" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.dateOfBirth || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Father Name</td>
+                    <td editable-text="user.fatherName" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.fatherName || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Mobile(Father)</td>
+                    <td editable-text="user.fatherMobile" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.fatherMobile || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Occupation</td>
+                    <td editable-text="user.occupation" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.occupation || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Annual Salary</td>
+                    <td editable-text="user.annualSalary" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.annualSalary || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Mumbai Address</td>
+                    <td editable-text="user. mumbaiAddress" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.mumbaiAddress || 'empty' }}</td>
+                </tr>
+                <tr>
+                    <td>Permanat Adress</td>
+                    <td editable-text="user.premanentAddress" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">{{user.premanentAddress || 'empty' }}</td>
+                </tr>
+           
+        </table>
+
+        <!-- buttons -->
+        <div style="white-space: nowrap;margin-left:55px;">
+
+    <button  id="save" type="submit" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+    <button id="edit" type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+                    <span  id="symbol" class="glyphicon glyphicon-pencil"></span>
+     </button>                               
+
+
+    <button type="button" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" ng-click="cancelChanges()" class="btn btn-default">cancel
+      </button>
+</div>
+
+</form>
+</div>

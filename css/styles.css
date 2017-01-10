@@ -1,0 +1,715 @@
+body {
+    background-color: white;
+    background-size: initial;
+}
+
+body.login-page {
+    background-color: #D8D1C7;
+    background-size: initial;
+}
+
+#login-card {
+    width: 300px;
+    height: 396px;
+    border: none;
+    background-color: #D8D1C7 !important;
+}
+
+.login-box {
+    display: inline-block;
+    width: 300px;
+    height: 396px;
+    max-width: 500px;
+    /*margin:-10px;*/
+    /*padding:1em 2em 2em 2em;*/
+    font-family: AppleGothic;
+    /*changing color*/
+    /*margin-top:5%;*/
+}
+
+@media only screen and (max-width: 600px) {
+    #login-card {
+        margin: 5% auto auto 10%;
+    }
+}
+
+.login-box img {
+    /*box-shadow: 1px 1px 1px ;*/
+    -webkit-filter: drop-shadow(4px 4px 4px grey);
+    /*filter: drop-shadow(5px 5px 5px white);*/
+    /*box-shadow: 10px;*/
+    margin-left: 101px;
+    margin-right: 101px;
+}
+
+.login {
+    display: inline-block;
+    width: 300px;
+    height: 290px;
+    background-color: rgba(247, 245, 241, 0.82);
+    color: rgba(59, 83, 114, 1);
+    border-radius: 10px;
+    border: white;
+    box-shadow: 2px 2px 8px 2px gray;
+}
+
+.login div {
+    margin-top: 19px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.login form #input1 {
+    height: 50px;
+    padding-left: 17px;
+    padding-right: 18px;
+    font-size: 18px;
+    color: rgba(59, 83, 114, 1);
+}
+
+.login form md-input-container input {
+    border: none;
+    border-bottom: 1px solid rgba(59, 83, 114, 1);
+}
+
+.login form md-input-container label {
+    color: rgba(59, 83, 114, 1);
+    padding-left: 17px !important;
+    font-weight: 500 !important;
+}
+
+.login form #input2 {
+    height: 35px;
+    padding-left: 17px;
+    padding-right: 18px;
+    font-size: 18px;
+    color: rgba(59, 83, 114, 1);
+}
+
+.login form button {
+    margin-top: 8px;
+    border-radius: 5px;
+    margin-left: 93.5px;
+    width: 113px;
+    height: 41px;
+    font-size: 18px;
+    border: 1px solid rgba(59, 83, 114, 1);
+}
+
+.text-danger {
+    color: rgba(236, 13, 13, 1);
+    font-size: 12px;
+}
+
+.md-raised[disabled] {
+    color: rgba(59, 83, 114, 1);
+    background-color: rgba(247, 245, 241, 0.82);
+}
+
+.md-raised {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(59, 83, 114, 1);
+    /*background-color : black;*/
+}
+
+
+/*navbar content*/
+
+@media(min-width:760px) {
+    .row {
+        margin-top: 50px;
+    }
+    .row ul li {
+        margin-left: 50px;
+        display: table-cell;
+    }
+}
+
+@media(min-width:1200px) {
+    .row ul li {
+        margin-left: 140px;
+        display: table-cell;
+    }
+}
+
+nav {
+    background-color: #D8D1C7 !important;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 50%) !important;
+}
+
+.nav-brand {
+    opacity: 100;
+    text-align: left;
+    color: #3B5372;
+    font-family: Ionicons;
+    line-height: 0px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.navbar-header {
+    margin-left: 50px;
+}
+
+#top-nav {
+    margin-right: 20px;
+}
+
+.row ul li a {
+    width: 100px;
+    height: 18px;
+    opacity: 100;
+    text-align: left;
+    color: #3B5372 !important;
+    font-family: LucidaGrande-Bold;
+    font-weight: bold;
+    line-height: 0px;
+    font-size: 16px;
+    letter-spacing: 0px;
+}
+
+.date {
+    color: #3B5372 !important;
+    font-family: Applegothic;
+    font-size: 16px;
+    letter-spacing: 0px;
+}
+
+#name {
+    color: #3B5372 !important;
+    font-family: Applegothic;
+    font-size: 16px;
+    letter-spacing: 0px;
+}
+
+#block {
+    width: 255px;
+    height: 73px;
+    opacity: 100;
+    background-color: #3B5372;
+}
+
+.mail {
+    width: 187px;
+    height: 18px;
+    opacity: 100;
+    text-align: left;
+    color: #D8D1C7;
+    font-family: AppleGothic;
+    line-height: 0px;
+    font-size: 15px;
+    padding: 13px 51px 15px 17px;
+}
+
+#logout {
+    width: 54px;
+    height: 18px;
+    opacity: 100;
+    text-align: left;
+    color: #D8D1C7;
+    font-family: MyriadPro-Light;
+    line-height: 0px;
+    font-size: 15px;
+    letter-spacing: 0px;
+    padding-left: 65%;
+}
+
+#logout:hover {
+    background-color: #3B5372;
+    color: #D8D1C7;
+    text-decoration: none;
+}
+
+
+/*card content*/
+
+.dash {
+    padding-top: 80px;
+}
+
+.card {
+    margin-top: 10px;
+    border: 2px solid rgba(156, 205, 227, 0.99);
+    height: 222px;
+    border-radius: 3px;
+    opacity: 100;
+    background-color: #FFFFFF;
+    border: solid 2px #9CCDE3;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 50%);
+}
+
+.text {
+    opacity: 100;
+    text-align: left;
+    color: #3B5372;
+    font-family: LucidaGrande-Bold;
+    line-height: 0px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    font-weight: bold;
+    padding-top: 17px;
+}
+
+.text1 {
+    opacity: 100;
+    text-align: center;
+    color: #6FB8D9;
+    font-family: LucidaGrande-Bold;
+    line-height: 0px;
+    font-size: 36px;
+    letter-spacing: 0px;
+    font-weight: bold;
+    padding-top: 30%;
+}
+
+@media (max-width:990px) {
+    .text1 {
+        padding-top: 15%;
+    }
+}
+
+@media (max-width:500px) {
+    .text1 {
+        padding-top: 30%;
+    }
+}
+
+.toc {
+    float: right;
+    margin-top: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.toc1 {
+    margin-top: -10px;
+    float: right;
+    width: 24px;
+    height: 24px;
+}
+
+.header {
+    padding-left: 19px;
+    padding-right: 21px;
+}
+
+
+/*################Profile page###############################################*/
+
+
+/*.sidebar-nav li {
+    
+text-indent: 30px;
+    width: 241px; 
+height: 96.269000460617px; 
+opacity: 100; 
+background-color: #3B5372; 
+padding-top: 20px;
+}
+
+.anchor{
+color:#D8D1C7!important;
+text-decoration: none;
+    
+opacity: 100; 
+text-align: left;
+font-family: LucidaGrande-Bold; 
+line-height: 0px; 
+font-size: 18px; 
+letter-spacing: 0px; 
+}
+.sidebar-nav li a:active {
+   text-decoration:none!important;
+   padding-left:33px;
+   
+}
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: -55px;
+}
+
+.img1 {
+width: 241px; 
+height: 243px; 
+opacity: 100; 
+ }
+ .sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+      text-decoration:none;
+    text-align: center;
+}
+a{
+    text-decoration:none!important;
+}
+
+
+#profile td:nth-child(1){
+    color:#3B5372;
+    font-size:17px;
+   font-family:  LucidaGrande-Bold;
+ 
+   font-weight: bold;
+}
+
+
+#profile td:nth-child(2){
+    color:#3B5372;
+    font-size:17px;
+   font-family:  AppleGothic;
+ 
+   
+}
+#profile td{
+    padding:5px;
+    width:1px;
+   
+}
+#empInfo{
+    float:left;
+    margin-left:-5px;
+ 
+}
+#profilehead{
+padding-top: 1px;
+    margin-top: 10px;
+}
+#empInfo td{
+padding-left: 5px;
+    padding-right: 50px
+
+}
+
+#empDetails td{
+padding-left: 50px;
+}
+
+#profiletable{
+padding-top:30px;
+border-bottom: solid 5px #D8D1C7;  
+ width: 100%!important;
+position:absolute;
+left:0;
+right:-100px;
+}
+
+
+
+
+#main
+{
+padding-right: 1px!important;
+padding-left: 1px!important;
+
+}
+
+#left-sidebar{
+    margin-top: 328px;
+    margin-left: 0px;
+    left:-68px;
+
+}
+
+#personalCtrl{
+    margin-top: 320px;
+  
+    position:absolute;
+        margin-left: 200px;
+}*/
+
+
+/*############PersonalData###################*/
+
+
+/*#edit{
+            margin-top:  -550px;
+            float: right;
+            border:0px;
+        }
+
+ #personalData
+ {   margin-top:80px;
+     width: 531px; 
+    height: 547px; 
+ }
+    #engView
+    {
+        margin-top:-30px;
+    }  
+
+
+   #personalData td:nth-child(1){
+    color:#3B5372;
+    font-size:16px;
+   font-family:  LucidaGrande-Bold;
+   font-weight: bold;
+    width:35%;
+}
+
+
+
+
+#personalData td:nth-child(2){
+    color:#3B5372;
+    font-size:16px;
+   font-family:  AppleGothic ;
+ padding-left: 100px;
+   
+}
+
+ #personalData td{
+padding-left: 5px;
+    padding-right: 50px;
+    width:auto;
+}
+
+#save{
+    color: #FFFFFF;
+    background-color: #3B5372;
+    border-color: #3B5372;
+}
+
+#symbol{
+    color:#3B5372!important;
+}
+
+.form-control {
+    
+    color: #3B5372!important;
+  
+    
+}
+
+
+
+
+.editable-wrap .editable-controls>input{
+    margin-left:100px!important;
+}
+#personaldata{
+margin-left:50px;
+}
+
+#formsize{
+    width:1000px;
+}*/
+
+
+/*################Profile page###############################################*/
+
+.sidebar-nav li {
+    /*text-indent: 20px;
+    line-height: 40px;*/
+    text-indent: 30px;
+    width: 241px;
+    height: 100px;
+    opacity: 100;
+    background-color: #1e2a3a;
+    /*padding-top: 20px;*/
+    padding-left: 20px
+}
+
+.anchor {
+    color: #D8D1C7!important;
+    text-decoration: none;
+    opacity: 100;
+    text-align: left;
+    font-family: LucidaGrande-Bold;
+    line-height: 0px;
+    font-size: 18px;
+    letter-spacing: 0px;
+}
+
+
+/*.sidebar-nav li a:active {
+   text-decoration:none!important;
+   padding-left:33px;
+   
+}*/
+
+.sidebar-nav li.active {
+    padding-left: 50px;
+}
+
+.sidebar-nav li div {
+    padding-top: 30px;
+}
+
+.sidebar-nav li img:active {
+    padding-left: 33px;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: -70px;
+}
+
+.img1 {
+    width: 241px;
+    height: 243px;
+    opacity: 100;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+    text-align: center;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+#profile td:nth-child(1) {
+    color: #3B5372;
+    font-size: 17px;
+    font-family: LucidaGrande-Bold;
+    font-weight: bold;
+}
+
+#profile td:nth-child(2) {
+    color: #3B5372;
+    font-size: 17px;
+    font-family: AppleGothic;
+}
+
+#profile td {
+    padding: 5px;
+    width: 1px;
+}
+
+#empInfo {
+    float: left;
+    margin-left: -5px;
+}
+
+#profilehead {
+    padding-top: 1px;
+    margin-top: 10px;
+}
+
+#empInfo td {
+    padding-left: 5px;
+    padding-right: 50px
+}
+
+#empDetails td {
+    padding-left: 50px;
+}
+
+#profiletable {
+    /*position: fixed !important;*/
+    padding-top: 30px;
+    border-bottom: solid 5px #D8D1C7;
+    width: 100%!important;
+    position: absolute;
+    left: 0;
+    right: -100px;
+}
+
+#main {
+    padding-right: 1px!important;
+    padding-left: 1px!important;
+}
+
+#left-sidebar {
+    margin-top: 328px;
+    margin-left: 0px;
+    left: -68px;
+}
+
+#personalCtrl {
+    margin-top: 320px;
+    position: absolute;
+    margin-left: 200px;
+}
+
+#calenderctrl {
+    margin-top: 370px;
+    position: absolute;
+    margin-left: 200px;
+}
+
+#sidepadding img {
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-top: -10px;
+}
+
+
+/*############PersonalData###################*/
+
+#edit {
+    margin-top: -550px;
+    float: right;
+    border: 0px;
+}
+
+#personalData {
+    margin-top: 80px;
+    width: 531px;
+    height: 547px;
+}
+
+#engView {
+    margin-top: -30px;
+}
+
+#personalData td:nth-child(1) {
+    color: #3B5372;
+    font-size: 16px;
+    font-family: LucidaGrande-Bold;
+    font-weight: bold;
+    width: 35%;
+}
+
+
+/*#personalData td{
+   
+}*/
+
+#personalData td:nth-child(2) {
+    color: #3B5372;
+    font-size: 16px;
+    font-family: AppleGothic;
+    padding-left: 100px;
+    /*padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;*/
+}
+
+#personalData td {
+    padding-left: 5px;
+    padding-right: 50px;
+    width: auto;
+}
+
+#save {
+    color: #FFFFFF;
+    background-color: #3B5372;
+    border-color: #3B5372;
+}
+
+#symbol {
+    color: #3B5372!important;
+}
+
+.form-control {
+    color: #3B5372!important;
+}
+
+.editable-wrap .editable-controls>input {
+    margin-left: 100px!important;
+}
+
+#personaldata {
+    margin-left: 50px;
+}
+
+#formsize {
+    width: 1000px;
+}

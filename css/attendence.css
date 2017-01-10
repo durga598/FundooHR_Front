@@ -1,0 +1,173 @@
+.md-dialog-container{
+    top: 0px !important;
+}
+md-backdrop.md-dialog-backdrop .md-opaque{
+    height: 0px !important;
+}
+
+
+#popupContainer {
+    width: 623px;
+    height: 430px;
+    z-index: 1000;
+}
+
+table#attendence {
+    font-family: 'AppleGothic';
+    font-size: 24px;
+    color: rgba(111, 184, 217, 1);
+    text-align: right;
+    width: 623px;
+    height: 430px;
+    border-radius: 8px !important;
+    opacity: 100;
+    border: solid 3px rgba(180, 221, 239, 0.99) !important;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+table#attendence td,
+table#attendence th {
+    opacity: 100;
+    border: solid 1px #D8D1C7;
+}
+
+.calenderheader {
+    float: right;
+}
+
+.calendar {
+    width: 623px;
+    height: 430px;
+}
+
+.dayNum {
+    width: 25px;
+    height: 29px;
+    opacity: 100;
+    text-align: left;
+    color: #6FB8D9;
+    font-family: AppleGothic;
+    line-height: 0px;
+    font-size: 24px;
+    letter-spacing: 0px;
+    padding-right: 30%;
+}
+
+span.dateShow {
+    font-size: 18px;
+    display: inline-block;
+    width: 160px;
+    vertical-align: middle;
+    align-content: center;
+    text-align: center;
+    color: #3B5372;
+}
+
+.status span {
+    margin-top: 5px;
+    display: block;
+    text-align: center;
+}
+
+.Present {
+    background: url(../assets/ion-checkmark-round.png) no-repeat;
+    background-size: 17px, 21px, auto;
+    background-position: center;
+    height: 21px;
+}
+
+.Leave {
+    background: url(../assets/L.png) no-repeat;
+    background-size: 12px, 23px, auto;
+    background-position: center;
+    height: 17px;
+}
+
+.CompLeave {
+    background: url(../assets/C.png) no-repeat;
+    background-size: 17px, 21px, auto;
+    background-position: center;
+    height: 21px;
+}
+
+.unmark {
+    background: url(../assets/ion-alert.png) no-repeat;
+    background-size: 7px, 10px, auto;
+    background-position: center;
+    height: 17px;
+}
+
+.upcoming {
+    color: transparent;
+    text-shadow: 1px 1px 8px #aaa;
+}
+
+
+/*.icon {
+    vertical-align: bottom;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+.icon:active {
+    opacity: .5;
+}
+
+.demo.button input {
+    margin-right: 2px;
+}
+
+.demo.button .ui-button-text {
+    padding: .4em .6em;
+    line-height: 0.8;
+}*/
+
+md-dialog-content {
+    text-align: left;
+    color: #6FB8D9;
+    font-size: 15px;
+}
+md-backdrop{
+    display: none;
+}
+#calenderEdit{
+    float: right;
+    border: 0px;
+}
+#calenderSave {
+    float: right;
+width: 79px; 
+height: 44px; 
+border-radius: 3px; 
+opacity: 100; 
+background-color: #6FB8D9;
+text-align: left; 
+color: #FFFFFF; 
+font-size: 20px; 
+letter-spacing: 0px;  
+ }
+ #calenderCancel {
+     float: right;
+width: 79px; 
+height: 44px; 
+border-radius: 3px; 
+opacity: 100; 
+background-color: #FFFFFF; 
+border: solid 1px #6FB8D9;
+text-align: left; 
+color: #6FB8D9; 
+font-size: 20px; 
+letter-spacing: 0px;   
+ }
+
+ .dropdown-menu {
+    min-width: 0px !important;
+    text-align: center !important;
+    font-size: 20px;
+ }
+ label{
+     width: 20px;
+ }
