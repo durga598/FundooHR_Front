@@ -71,8 +71,8 @@ mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $au
         })
         .state('home.Profile.Attendence',{
             url:'/attendence/',
-            templateUrl:'templates/calendar.html',
-            controller:'AttendenceCtrl',
+            templateUrl:'templates/calendar.html'
+            // controller:'AttendenceCtrl',
             //   resolve:{
             //           loginRequired: loginRequired
             //         }
