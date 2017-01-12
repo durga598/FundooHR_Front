@@ -1,7 +1,19 @@
-<span class="glyphicons glyphicons-remove"></span>
-<table>
-    <tr>
-        <td>Reason</td>
-        <td>day.status.reason</td>
-    </tr>
-</table>
+<md-dialog>
+    <form ng-cloak>
+        <md-dialog-content>
+            <div class="md-dialog-content" id="popupStatus">
+                <label style="float:right;position:relative;margin: -15px;">
+               <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
+          </label>
+                <table class="popupTable">
+                    <tr>
+                        <td>Reason</td>
+                        <td>{{reason}}</td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

@@ -8,11 +8,11 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
         },
         link: function (scope) {
 
-            scope.readData(Date.now());
+            //scope.readData(Date.now());
 
-scope.inc=0;
+            scope.inc = 0;
             scope.$watch("attendance", function (data, newData) {
-                        console.log("called link"+scope.inc++);
+                console.log("called link" + scope.inc++);
 
                 if (scope.called === undefined) {
                     scope.selected = _removeTime(scope.selected || moment());
@@ -39,33 +39,76 @@ scope.inc=0;
 
             //show dialog according to attendance status
             scope.showAlert = function (ev, day) {
-                console.log("Called");
+                
 
                 if (day.status.attendanceStatus === "Present") {
-                                            // .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
-                    $mdDialog.show(
-                        $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
+                    // .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
+                    // $mdDialog.show(
+                    //     $mdDialog.alert()
+                    //     .parent(angular.element(document.querySelector('#popupContainer')))
+                    //     .clickOutsideToClose(true)
+                    //     .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
 
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('OK')
-                        .targetEvent(ev)
-                        .disableParentScroll(false)
-                    );
+                    //     .ariaLabel('Alert Dialog Demo')
+                    //     .ok('OK')
+                    //     .targetEvent(ev)
+                    //     .disableParentScroll(false)
+                    // );
+                    $mdDialog.show({
+                            controller: function(scope){
+                                console.log("Called ",day);
+                                scope.punchIn = day.status.punchIn;
+                                scope.punchOut = day.status.punchOut;
+                                scope.cancel = function(){
+                                   $mdDialog.cancel(); 
+                                   
+                                }
+                            },
+                            templateUrl: 'partials/presentPopUp.html',
+                            parent: angular.element(document.querySelector('#popupContainer')),
+                            targetEvent: ev,
+                            clickOutsideToClose: true,
+                            disableParentScroll: false
+                            
+                        })
+                        .then(function (answer) {
+                            scope.status = 'You said the information was "' + answer + '".';
+                        }, function () {
+                            scope.status = 'You cancelled the dialog.';
+                        });
 
                 } else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
-                    $mdDialog.show(
-                        $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .htmlContent('sdfsdf<span class="glyphicons glyphicons-remove"></span>')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('OK')
-                        .targetEvent(ev)
-                        .disableParentScroll(false)
-                    );
+                    // $mdDialog.show(
+                    //     $mdDialog.alert()
+                    //     .parent(angular.element(document.querySelector('#popupContainer')))
+                    //     .clickOutsideToClose(true)
+                    //     .htmlContent('sdfsdf<span class="glyphicons glyphicons-remove"></span>')
+                    //     .ariaLabel('Alert Dialog Demo')
+                    //     .ok('OK')
+                    //     .targetEvent(ev)
+                    //     .disableParentScroll(false)
+                    // );
+                    $mdDialog.show({
+                            controller: function(scope){
+                                console.log("Called ",day);
+                                scope.reason = day.status.reason;
+                                scope.cancel = function(){
+                                    console.log("called");
+                                   $mdDialog.cancel(); 
+                                }
+                            },
+                            templateUrl: 'partials/absentPopUp.html',
+                            parent: angular.element(document.querySelector('#popupContainer')),
+                            targetEvent: ev,
+                            clickOutsideToClose: true,
+                            disableParentScroll: false
+                            
+                        })
+                        .then(function (answer) {
+                            // $scope.status = 'You said the information was "' + answer + '".';
+                        }, function () {
+                            // $scope.status = 'You cancelled the dialog.';
+                        });
                 }
             };
 
@@ -85,8 +128,8 @@ scope.inc=0;
                 scope.called = 0;
                 console.log("1");
                 var next = scope.month.clone();
-               
-                scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
+
+                //scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
 
 
             };
@@ -96,7 +139,7 @@ scope.inc=0;
                 scope.called = 1;
                 console.log("1");
                 var previous = scope.month.clone();
-                scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
+                //scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
                 console.log("2");
             };
         },

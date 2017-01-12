@@ -129,7 +129,16 @@ md-dialog-content {
     text-align: left;
     color: #6FB8D9;
     font-size: 15px;
+
 }
+.md-dialog-content#popupStatus {
+    text-align: left;
+    color: #6FB8D9;
+    font-size: 15px;
+max-width: 90%;
+  max-height: 90%;
+}
+
 md-backdrop{
     display: none;
 }
@@ -180,3 +189,12 @@ background-color: #FFFFFF;
 border: solid 2px #6FB8D9; 
 box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.446); 
  }
+
+.popupTable{
+        color: #6FB8D9;
+    height: 50%;
+    width: 90%;
+    text-align: center;
+    font-size: 18px;
+    margin: 15px;
+}

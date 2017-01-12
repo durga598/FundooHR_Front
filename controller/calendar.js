@@ -9,22 +9,30 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
     $scope.day = moment();
     $rootScope.attendanceData = [];
     $rootScope.attendance = [];
-   
-    $scope.$watch("selected", function (old, newData) {
-        //console.log(old, newData)
+   var promise = $http.get("assets/attendance.json").then(function (response) {
+    	$rootScope.attendance = response.data[0];
+    	$scope.attendance = response.data[0];
+    	// console.log(response.data[0]);
+    	$rootScope.attendanceData = Object.keys(response.data[0]);
+    	//   console.log(attendance[1].attendanceStatus);
+    	console.log('called1');
+    	//   console.log($rootScope.attendance);
     });
-    $scope.readData = function (timestamp) {
-        console.log("read");
+    // $scope.$watch("selected", function (old, newData) {
+    //     //console.log(old, newData)
+    // });
+    // $scope.readData = function (timestamp) {
+    //     console.log("read");
 
-        // console.log($scope.selected.unix());
-        $http({
-            "method": "GET",
-            "url": "http://192.168.0.171:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
-        }).then(function (data) {
-            console.log(data);
-            $scope.attendance = data.data.attendanceData;
-        })
-    }
+    //     // console.log($scope.selected.unix());
+    //     $http({
+    //         "method": "GET",
+    //         "url": "http://192.168.0.171:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
+    //     }).then(function (data) {
+    //         console.log(data);
+    //         $scope.attendance = data.data.attendanceData;
+    //     })
+    // }
 
 
 
@@ -33,7 +41,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
 
     $scope.checkAttend = function (day) {
         console.log("called " + $scope.incr++);
-        console.log(day.date)
+        //console.log(day.date)
         var todayDate = moment();
 
         //console.log(todayDate.isBefore(day.date), day.date, todayDate);
@@ -51,7 +59,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                 return "";
             }
         }
-        console.log($scope.markedStatus);
+        //console.log($scope.markedStatus);
     };
     $scope.someD = function (data, attendanceStatus) {
         console.log($scope.markedStatus);

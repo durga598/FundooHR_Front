@@ -1,4 +1,4 @@
-<md-dialog aria-label="Test">
+<!--<md-dialog aria-label="Test">
     <div layout-padding layout="column">
         <md-input-container>
             <label>In Time</label>
@@ -11,4 +11,19 @@
         <md-button ng-click="save()" class="md-primary">Save</md-button>
         <md-button ng-click="close()" class="md-primary">Close</md-button>
     </div>
+</md-dialog>-->
+<md-dialog>
+    <form ng-cloak>
+        <md-dialog-content>
+            <div class="md-dialog-content" id="popupStatus">
+                <label style="float:right;position:relative;margin: -15px;">
+               <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
+          </label>
+                <input type="time" ng-model="punchIn">
+                <input type="time" ng-model="punchOut">
+                <md-button ng-click="save()" class="md-primary">Save</md-button>
+            </div>
+        </md-dialog-content>
+    </form>
 </md-dialog>
