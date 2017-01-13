@@ -9,38 +9,38 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
     $scope.day = moment();
     $rootScope.attendanceData = [];
     $rootScope.attendance = [];
-   var promise = $http.get("assets/attendance.json").then(function (response) {
-    	$rootScope.attendance = response.data[0];
-    	$scope.attendance = response.data[0];
-    	// console.log(response.data[0]);
-    	$rootScope.attendanceData = Object.keys(response.data[0]);
-    	//   console.log(attendance[1].attendanceStatus);
-    	console.log('called1');
-    	//   console.log($rootScope.attendance);
-    });
+//    var promise = $http.get("assets/attendance.json").then(function (response) {
+//     	$rootScope.attendance = response.data[0];
+//     	$scope.attendance = response.data[0];
+//     	// console.log(response.data[0]);
+//     	$rootScope.attendanceData = Object.keys(response.data[0]);
+//     	//   console.log(attendance[1].attendanceStatus);
+//     	console.log('called1');
+//     	//   console.log($rootScope.attendance);
+//     });
     // $scope.$watch("selected", function (old, newData) {
     //     //console.log(old, newData)
     // });
-    // $scope.readData = function (timestamp) {
-    //     console.log("read");
+    $scope.readData = function (timestamp) {
+        console.log("read");
 
-    //     // console.log($scope.selected.unix());
-    //     $http({
-    //         "method": "GET",
-    //         "url": "http://192.168.0.171:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
-    //     }).then(function (data) {
-    //         console.log(data);
-    //         $scope.attendance = data.data.attendanceData;
-    //     })
-    // }
+        // console.log($scope.selected.unix());
+        $http({
+            "method": "GET",
+            "url": "http://192.168.0.171:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
+        }).then(function (data) {
+            console.log(data);
+            $scope.attendance = data.data.attendanceData;
+        })
+    }
 
 
 
     $scope.markedStatus = {};
-    $scope.incr = 0;
+    //$scope.incr = 0;
 
     $scope.checkAttend = function (day) {
-        console.log("called " + $scope.incr++);
+        //console.log("called " + $scope.incr++);
         //console.log(day.date)
         var todayDate = moment();
 
@@ -62,9 +62,11 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         //console.log($scope.markedStatus);
     };
     $scope.someD = function (data, attendanceStatus) {
-        console.log($scope.markedStatus);
+            $scope.storeAttendence = {};
+        
+        console.log(data);
         var dataNumber = JSON.parse(data);
-        console.log('data ', dataNumber.number);
+        console.log('data ', dataNumber.timeStamp);
         if (attendanceStatus === "Present") {
             $mdDialog.show({
                 parent: angular.element(document.querySelector('#popupContainer')),
@@ -77,23 +79,27 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                     $scope.save = function () {
                         console.log("called save");
                         item = {};
-                        storeAttendence = {};
-                        storeAttendence["attendanceStatus"] = attendanceStatus;
-                        storeAttendence["markedStatus"] = "true";
-                        storeAttendence["punchIn"] = getTime($scope.punchIn);
-                        storeAttendence["punchOut"] = getTime($scope.punchOut);
-                        storeAttendence["reason"] = "";
+                        //storeAttendence = {};
+                        $scope.storeAttendence["token"] = "f12sd1fd2sf1";
+                        $scope.storeAttendence["timeStamp"] = dataNumber.timeStamp;
+                        $scope.storeAttendence["engineerId"] = "427188EI";
+                        $scope.storeAttendence["attendanceStatus"] = attendanceStatus;
+                        $scope.storeAttendence["markedStatus"] = "true";
+                        $scope.storeAttendence["punchIn"] = getTime($scope.punchIn);
+                        $scope.storeAttendence["punchOut"] = getTime($scope.punchOut);
+                        $scope.storeAttendence["reason"] = "";
 
                         item[dataNumber.number] = storeAttendence;
 
                         console.log(storeAttendence, item);
                         $scope.markedStatus[dataNumber.number] = attendanceStatus;
+                        // token=f12sd1fd2sf1&engineerId=427188EI
 
-                        $scope.close();
+                        $scope.cancel();
 
                     }
-                    $scope.close = function () {
-                        $mdDialog.hide();
+                    $scope.cancel = function () {
+                        $mdDialog.cancel();
                     }
                 },
             });
@@ -106,25 +112,29 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                 preserveScope: true,
                 controller: function ($scope) {
                     $scope.save = function () {
+                        console.log($scope.reason);
                         console.log("called save");
                         item = {};
-                        storeAttendence = {};
-                        storeAttendence["attendanceStatus"] = attendanceStatus;
-                        storeAttendence["markedStatus"] = "true";
-                        storeAttendence["punchIn"] = "";
-                        storeAttendence["punchOut"] = "";
-                        storeAttendence["reason"] = $scope.reason;
-                        item[data.number] = storeAttendence;
+                        //storeAttendence = {};
+                        $scope.storeAttendence["token"] = "f12sd1fd2sf1";
+                        $scope.storeAttendence["timeStamp"] = dataNumber.timeStamp;
+                        $scope.storeAttendence["engineerId"] = "427188EI";
+                        $scope.storeAttendence["attendanceStatus"] = attendanceStatus;
+                        $scope.storeAttendence["markedStatus"] = "true";
+                        $scope.storeAttendence["punchIn"] = "";
+                        $scope.storeAttendence["punchOut"] = "";
+                        $scope.storeAttendence["reason"] = $scope.reason;
+                        //item[dataNumber.number] = storeAttendence;
 
-                        console.error($scope.markedStatus);
-                        console.log(storeAttendence, item);
+                        //console.error($scope.markedStatus);
+                        console.log($scope.storeAttendence);
                         $scope.markedStatus[dataNumber.number] = attendanceStatus;
 
-                        console.error($scope.markedStatus);
-                        $scope.close();
+                        //console.error($scope.markedStatus);
+                        $scope.cancel();
                     }
-                    $scope.close = function () {
-                        $mdDialog.hide();
+                    $scope.cancel = function () {
+                        $mdDialog.cancel();
                     }
                 },
                 disableParentScroll: false,
@@ -132,7 +142,16 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         }
 
     };
-
+function postData(storeAttendence){
+$http({
+            "method": "POST",
+            "url": "http://192.168.0.171:3000/createEmployeeDayAttendance",
+            "data": storeAttendence,
+        }).then(function (data) {
+            console.log(data);
+            $scope.attendance = data.data.attendanceData;
+        })
+}
     function getTime(date) {
         var hour = date.getHours(),
             min = date.getMinutes();

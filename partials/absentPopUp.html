@@ -2,16 +2,20 @@
     <form ng-cloak>
         <md-dialog-content>
             <div class="md-dialog-content" id="popupStatus">
-                <label style="float:right;position:relative;margin: -15px;">
+                <label style="float:right;position:fixed;margin: -15px;right:20%;">
                <md-button class="md-icon-button" ng-click="cancel()">
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
           </label>
                 <table class="popupTable">
                     <tr>
                         <td>Reason</td>
-                        <td>{{reason}}</td>
+                        
                     </tr>
-                    
+                    <tr>
+                        <td>
+                            <textarea style="margin: 0px;width: 218px;height: 84px;" readonly>{{reason}}</textarea>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </md-dialog-content>

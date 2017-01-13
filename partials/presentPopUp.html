@@ -2,11 +2,11 @@
     <form ng-cloak>
         <md-dialog-content>
             <div class="md-dialog-content" id="popupStatus">
-                <label style="float:right;position:relative;margin: -15px;">
+                <label style="float:right;position:fixed;margin: -15px;right:20%;">
                <md-button class="md-icon-button" ng-click="cancel()">
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
           </label>
-                <table class="popupTable">
+                <table class="popupTable" width="100%" style="table-layout: fixed">
                     <tr>
                         <td>InTime</td>
                         <td>{{punchIn}}</td>

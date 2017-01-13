@@ -5,9 +5,9 @@
       </button>
     </div>
     <div class="calenderheader">
-        <i class="fa fa-caret-left fa-lg" ng-click="previous()"></i>
+        <i class="fa fa-caret-left fa-lg" ng-click="previous()" style="font-size:25px;"></i>
         <span class="dateShow">{{month.format("MMMM, YYYY")}}</span>
-        <i class="fa fa-caret-right fa-lg" ng-click="next()"></i>
+        <i class="fa fa-caret-right fa-lg" ng-click="next()" style="font-size:25px;"></i>
     </div>
     <div id="popupContainer">
         <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">

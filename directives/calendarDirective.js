@@ -8,7 +8,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
         },
         link: function (scope) {
 
-            //scope.readData(Date.now());
+            scope.readData(Date.now());
 
             scope.inc = 0;
             scope.$watch("attendance", function (data, newData) {
@@ -129,7 +129,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                 console.log("1");
                 var next = scope.month.clone();
 
-                //scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
+                scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
 
 
             };
@@ -139,7 +139,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                 scope.called = 1;
                 console.log("1");
                 var previous = scope.month.clone();
-                //scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
+                scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
                 console.log("2");
             };
         },
@@ -187,6 +187,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                         number: date.date(),
                         isCurrentMonth: date.month() === month.month(),
                         isToday: date.isSame(new Date(), "day"),
+                        timeStamp:date.unix(),
                         date: date,
                         enable: true,
                         status: scope.attendance[date.date()]
@@ -196,6 +197,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                     name: date.format("dd").substring(0, 1),
                     number: date.date(),
                     isCurrentMonth: date.month() === month.month(),
+                    timeStamp:date.unix(),
                     isToday: date.isSame(new Date(), "day"),
                     date: date,
                     enable: true,
