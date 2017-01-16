@@ -1,0 +1,431 @@
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title> FundooHr </title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="attend.css">
+    <!--<link rel="stylesheet" href="css/attendence.css">-->
+    <link rel="stylesheet" href="profile.css">
+    <style>
+        body {
+            padding-top: 90px;
+        }
+        
+        .activeLi {
+            border-width: 10px;
+            border-bottom: solid rgba(59, 83, 114, 1);
+            transition: 0.3s ease;
+        }
+        
+        .sidenav {
+            height: auto;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav img {
+            width: 1em;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            color: #818181;
+            display: block;
+            transition: 0.3s
+        }
+        
+        .sidenav a:hover,
+        .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        .sidenav ul {
+            text-indent: 1em;
+            font-size: 2em;
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+        
+        .sidenav.anchor {
+            color: #D8D1C7!important;
+            opacity: 100;
+            text-align: left;
+            font-family: LucidaGrande-Bold;
+            font-size: 18px;
+        }
+        
+        #menuBar {
+            color: white;
+            right: 15;
+            position: absolute;
+            float: right;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        
+        @media screen and (min-width: 768px) {
+            .sidenav {
+                display: none;
+            }
+            #menuBar {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            #profiletable img {
+                object-fit: cover;
+                display: block;
+                margin: auto;
+                height: 60vh;
+                width: 100vw;
+            }
+            #profileDetail {
+                display: none;
+            }
+            #left-sidebar {
+                display: none;
+            }
+            table#attendence {
+                width: 90vw;
+            }
+            .dayNum{
+                font-size: 16px;
+            }
+            .Present,.CompLeave{
+                    background-size: 12px, 22px, auto;
+    height: 15px;
+            }
+            .Leave{
+                    background-size: 9px, 20px, auto;
+    height: 15px;
+            }
+            .unmark{
+                    background-size: 4px, 10px, auto;
+    background-position: center;
+    height: 15px;
+            }
+        }
+    </style>
+</head>
+<!-- <body ng-app="mainApp" class="{{bodyClass}}" ng-controller="GlobalCtrl" ng-cloak layout="column"> -->
+
+<body ng-app="mainApp" ng-controller="AttendenceCtrl">
+    <div class="container">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    style="float:right;">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+    </button>
+                <div class="nav-brand">
+                    <img src="images/logo.png" class="logo">
+                    <span class="FundooHR">FundooHR </span>
+                    </img>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="row" id="top-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="showDate"><span class="glyphicon glyphicon-time"></span><span class="date"> 26,November 2016</span>
+                        </li>
+                        <li class="dropdown" id="showUser">
+                            <span class="dropdown-toggle name" data-toggle="dropdown" id="name">
+          <img src="images/user.png" width="20px" height="20px" />Pranali Patil
+          <label class="caret"></label></span>
+                            <ul class="dropdown-menu" id="block">
+                                <li class="mail">naveennpv.navi@gmail.com</li>
+                                <li>
+                                    <a ui-sref="logout" id="logout"><img src="images/logout web.png" width="12px" height="14px" />logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-justified" style="font-size: 16px;color: #3B5372 !important;">
+                        <li class="activeLi dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
+                        <li class="engineers"><a ui-sref=".Engineers">Engineers</a></li>
+                        <li class="attendence"><a ui-sref="Attendence">Attendence</a></li>
+                        <li class="clients"><a>Clients</a></li>
+                        <li class="reports"><a>Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid" id="main">
+        <div class="row" id="profiletable">
+            <div class="col-xs-12 col-lg-3 col-md-3">
+                <label id="menuBar" style="float:right;font-size:30px;cursor:pointer" onclick="openNav()">&#8942;</label>
+                <img src="images/emp2.jpg" alt="{{empdetails.employeeName}}" class="img1 image-responsive" />
+            </div>
+            <div class="col-xs-12 col-lg-9 col-md-9" id="profilehead">
+                <div>
+                    <h4 style="color:#3B5372;font-weight:bold;font-family:Ionicons;font-size:20px">
+                        Abcde EfghI</h4>
+                    <h4>
+                        <span style="color:#3B5372;font-weight:bold; ">Id</span> 427188EI
+                    </h4>
+                </div>
+                <div id="profileDetail">
+                    <span style="float:left;">
+                    <table id="profile1">
+
+                        <tr>
+                            <td>Status</td>
+                            <td>Internship</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Company</td>
+                            <td>BridgeLabz</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Mobile</td>
+                            <td>9876543210</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Emailid</td>
+                            <td>abcdefghi@bridgelabz.com</td>
+
+                        </tr>
+                    </table>
+                    </span>
+                    <span style="float:left;">
+
+                    <table id="profile2">
+
+                        <tr>
+                            <td>BL Start Date</td>
+                            <td>2 March 2016</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Company Start Date</td>
+                            <td>4 June 2016</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Company Leave Date</td>
+                            <td>15 December 2016</td>
+
+                        </tr>
+                        <tr>
+                            <td style="color:#3B5372">Leaves Taken</td>
+                            <td>4</td>
+
+                        </tr>
+                    </table>
+                </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-lg-3 col-md-3" id="left-sidebar">
+                <ul class="sidebar-nav" style="list-style:none;" id="sidepadding">
+                    <li ui-sref-active="active" class="active">
+                        <div><a class="anchor" ui-sref=".Attendence"><span><img src="images/.png"></img></span><b>Attendence</b></a></div>
+                    </li>
+                    <li ui-sref-active="active">
+                        <div><a class="anchor"><span><img ng-src="images/face - material.png"></img></span><b>Personal</b></a></div>
+                    </li>
+                    <li ui-sref-active="active">
+                        <div><a class="anchor"><span><img ng-src="images/art_track - material.png"></img></span><b>Profile</b></a></div>
+                    </li>
+                    <li ui-sref-active="active">
+                        <div><a class="anchor" href="#"><span><img ng-src="images/Group.png"></img></span><b>HRData</b></a></div>
+                    </li>
+                    <li ui-sref-active="active">
+                        <div><a class="anchor" href="#"><span><img ng-src="images/ion-card - Ionicons.png"></img></span><b>Bank</b></a></div>
+                    </li>
+                    <li ui-sref-active="active">
+                        <div><a class="anchor" href="#"><span><img ng-src="images/ion-android-compass - Ionicons.png"></img></span><b>TrackingSheet</b></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-lg-9 col-md-9">
+                <calendar selected="day"></calendar>
+            </div>
+        </div>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <ul style="list-style:none;">
+            <li>
+                <div><a class="anchor" ui-sref=".Attendence"><span><img src="images/.png"></img></span><b>Attendence</b></a></div>
+            </li>
+            <li>
+                <div><a class="anchor"><span><img ng-src="images/face - material.png"></img></span><b>Personal</b></a></div>
+            </li>
+            <li>
+                <div><a class="anchor"><span><img ng-src="images/art_track - material.png"></img></span><b>Profile</b></a></div>
+            </li>
+            <li>
+                <div><a class="anchor" href="#"><span><img ng-src="images/Group.png"></img></span><b>HRData</b></a></div>
+            </li>
+            <li>
+                <div><a class="anchor" href="#"><span><img ng-src="images/ion-card - Ionicons.png"></img></span><b>Bank</b></a></div>
+            </li>
+            <li>
+                <div><a class="anchor" href="#"><span><img ng-src="images/ion-android-compass - Ionicons.png"></img></span><b>TrackingSheet</b></a></div>
+            </li>
+        </ul>
+    </div>
+    <!--<div id="engView" class="container">
+        <div>
+            <div class="btn-edit" style="float:right;">
+                <button id="calenderEdit" type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+         <span  id="symbol" class="glyphicon glyphicon-pencil">
+      </button>
+            </div>
+            <div class="calenderheader">
+                <i class="fa fa-caret-left fa-lg" ng-click="previous()" style="font-size:25px;"></i>
+                <span class="dateShow">{{month.format("MMMM, YYYY")}}</span>
+                <i class="fa fa-caret-right fa-lg" ng-click="next()" style="font-size:25px;"></i>
+            </div>
+            <div id="popupContainer">
+                <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
+                    <table id="attendence">
+                        <tbody>
+                            <tr class="week" ng-repeat="week in weeks">
+                                <td class="day" e-form="tableform" ng-repeat="day in week.days">
+                                    <span class="dayNum" ng-class="checkAttend(day)">{{day.number}}</span>
+                                    <div class="status">
+                                        <span>
+                                    <label ng-show="day.number!==undeifned" ng-class="markedStatus" ng-click="!day.enable||showAlert($event,day)"></label>
+                                    <label ng-if="day.enable" ng-show="tableform.$visible">
+                                    <dropdown selected-day="{{day}}"></dropdown></label>
+                                </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn-form" ng-show="tableform.$visible">
+                        <button type="button" id="calenderCancel" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn">Cancel</button>
+                        <button type="submit" id="calenderSave" ng-disabled="tableform.$waiting" class="btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>-->
+    </div>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js" charset="utf-8"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js" charset="utf-8"></script>
+<script src="bower_components/angular-resource/angular-resource.js" charset="utf-8"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/satellizer/dist/satellizer.js"></script>
+<script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
+<script src="bower_components/svg-assets-cache.js/svg-assets-cache.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script type="text/javascript" src="bower_components/moment/moment.js"></script>
+<script src="app.js"></script>
+<script src="controller/loginCtrl.js"></script>
+<script src="controller/homectrl.js"></script>
+<script src="controller/dashBoardCtrl.js"></script>
+<script src="controller/logoutctrl.js"></script>
+<script src="controller/globalctrl.js"></script>
+<script src="controller/profileCtrl.js"></script>
+<script src="controller/personalCtrl.js"></script>
+<script src="controller/engineersCtrl.js"></script>
+<script src="controller/calendar.js"></script>
+<script src="services/sharedService.js">
+</script>
+<script src="directives/calendarDirective.js"></script>
+<script src="directives/cardDir.js"></script>
+<script src="directives/focus.js"></script>
+<script src="directives/attendence.js"></script>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $("ul.nav.nav-justified li").on("click", function() {
+            $("ul.nav.nav-justified li").removeClass("activeLi");
+            $(this).addClass("activeLi");
+        });
+    });
+    $(document).on('click', function() {
+        $('.collapse').collapse('hide');
+    });
+//     $(function () {
+//     var sidebar = $('.sidebar-nav');
+//     var top = sidebar.offset().top - parseFloat(sidebar.css('margin-top'))-70;
+// console.log(top);
+//     $(window).scroll(function (event) {
+//       var y = $(this).scrollTop();
+//       console.log(y);
+//       if (y >= top) {
+//         console.log("called >");
+          
+//         sidebar.addClass('fixed');
+//       } else {
+//         console.log("called <");
+          
+//         sidebar.removeClass('fixed');
+//       }
+//     });
+// });
+</script>
+<script>
+    $(window).click(function() {
+closeNav();
+});
+
+$('#menuBar').click(function(event){
+    event.stopPropagation();
+});
+</script>
+<script>
+function openNav() {
+    console.log("called");
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</html>

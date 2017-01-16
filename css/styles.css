@@ -713,3 +713,13 @@ a {
 #formsize {
     width: 1000px;
 }
+
+.navbar-default .navbar-nav>.open>a {
+    background-color: transparent !important;
+}
+@media (min-width: 600px) {
+  button.navbar-toggle {
+    float: right;
+    right: 0px;
+  }
+}

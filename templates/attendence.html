@@ -18,12 +18,12 @@
                             <span class="dayNum" ng-class="checkAttend(day)">{{day.number}}</span>
                             <div class="status">
                                 <span>
-                                    <label ng-show="day.number!==undefined" ng-class="markedStatus[day.number]" ng-click="!day.enable||showAlert($event,day)"></label>
+                                    <label ng-show="day.number!==undeifned" ng-class="markedStatus" ng-click="!day.enable||showAlert($event,day)" id="{{ day.number }}"></label>
                                     <label ng-if="day.enable" ng-show="tableform.$visible">
                                     <dropdown selected-day="{{day}}"></dropdown></label>
                                 </span>
-                                
-                                
+
+
                             </div>
                         </td>
                     </tr>

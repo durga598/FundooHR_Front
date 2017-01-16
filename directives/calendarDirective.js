@@ -39,7 +39,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
             //show dialog according to attendance status
             scope.showAlert = function (ev, day) {
-                
+
 
                 if (day.status.attendanceStatus === "Present") {
                     // .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
@@ -60,16 +60,16 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                                 scope.punchIn = day.status.punchIn;
                                 scope.punchOut = day.status.punchOut;
                                 scope.cancel = function(){
-                                   $mdDialog.cancel(); 
-                                   
+                                   $mdDialog.cancel();
+
                                 }
                             },
                             templateUrl: 'partials/presentPopUp.html',
-                            parent: angular.element(document.querySelector('#popupContainer')),
+                            parent: angular.element(document.querySelector('#attendence')),
                             targetEvent: ev,
                             clickOutsideToClose: true,
                             disableParentScroll: false
-                            
+
                         })
                         .then(function (answer) {
                             scope.status = 'You said the information was "' + answer + '".';
@@ -94,15 +94,15 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                                 scope.reason = day.status.reason;
                                 scope.cancel = function(){
                                     console.log("called");
-                                   $mdDialog.cancel(); 
+                                   $mdDialog.cancel();
                                 }
                             },
                             templateUrl: 'partials/absentPopUp.html',
-                            parent: angular.element(document.querySelector('#popupContainer')),
+                            parent: angular.element(document.querySelector('#attendence')),
                             targetEvent: ev,
                             clickOutsideToClose: true,
                             disableParentScroll: false
-                            
+
                         })
                         .then(function (answer) {
                             // $scope.status = 'You said the information was "' + answer + '".';
@@ -169,7 +169,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             monthIndex = date.month();
 
         }
-
+console.log(scope.weeks);
 
     }
 

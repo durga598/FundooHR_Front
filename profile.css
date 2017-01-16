@@ -1,0 +1,77 @@
+#profiletable{
+        border-bottom: solid 5px #D8D1C7;
+    margin-left: -30px;
+}
+#profile2{    height: 160px;
+    width: 400px;
+    margin-left: 15px;
+}
+#profile1{width: 400px;
+    height: 160px;
+    border: 0px;
+    border-right: solid 1px #3B5372;}
+.img1{
+    width: 241px; 
+height: 243px; 
+}
+.sidebar-nav li {
+    /*text-indent: 20px;
+    line-height: 40px;*/
+    text-indent: 30px;
+    width: 241px;
+    height: 100px;
+    opacity: 100;
+    background-color: #1e2a3a;
+    /*padding-top: 20px;*/
+    padding-left: 20px
+}
+.sidebar-nav li.active {
+    padding-left: 50px;
+}
+
+.sidebar-nav li div {
+    padding-top: 30px;
+}
+
+.sidebar-nav li img:active {
+    padding-left: 33px;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: -55px;
+}
+
+.img1 {
+    width: 241px;
+    height: 243px;
+    opacity: 100;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+    text-align: center;
+}
+.anchor {
+    color: #D8D1C7!important;
+    text-decoration: none;
+    opacity: 100;
+    text-align: left;
+    font-family: LucidaGrande-Bold;
+    line-height: 0px;
+    font-size: 18px;
+    letter-spacing: 0px;
+}
+#sidepadding img {
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-top: -10px;
+}
+.fixed{
+    position: relative;
+    top: 30px;
+    margin-top: -250px;
+}
