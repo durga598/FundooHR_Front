@@ -27,9 +27,9 @@ mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $au
             url: '/login',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl',
-            // resolve: {
-            //     skipIfLoggedIn: skipIfLoggedIn
-            // }
+            resolve: {
+                skipIfLoggedIn: skipIfLoggedIn
+            }
         })
         .state('logout', {
             url: '/logout',
@@ -40,50 +40,50 @@ mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $au
             url: '/',
             templateUrl: 'templates/home.html',
             controller: 'HomeCtrl',
-            //   resolve: {
-            //           loginRequired: loginRequired
-            //         }
+              resolve: {
+                      loginRequired: loginRequired
+                    }
         })
         .state('home.DashBoard',{
             url:'dash',
             templateUrl:'templates/dash.html',
             controller:'DashCtrl',
-            //   resolve: {
-            //           loginRequired: loginRequired
-            //         }
+              resolve: {
+                      loginRequired: loginRequired
+                    }
         })
         .state('home.Engineers',{
             url:'engineers',
             templateUrl: 'templates/engineers.html',
             controller: 'EngCtrl',
-            //   resolve: {
-            //           loginRequired: loginRequired
-            //         }
+              resolve: {
+                      loginRequired: loginRequired
+                    }
         })
 
          .state('home.Profile',{
             url:'engineers/profile/:portfolioId',
             templateUrl: 'templates/profile.html',
             controller:'ProfileCtrl',
-            //   resolve:{
-            //           loginRequired: loginRequired
-            //         }
+              resolve:{
+                      loginRequired: loginRequired
+                    }
         })
         .state('home.Profile.Attendence',{
             url:'/attendence/',
-            templateUrl:'templates/calendar.html'
-            // controller:'AttendenceCtrl',
-            //   resolve:{
-            //           loginRequired: loginRequired
-            //         }
+            templateUrl:'templates/calendar.html',
+            //controller:'AttendenceCtrl',
+              resolve:{
+                      loginRequired: loginRequired
+                    }
         })
         .state('home.Profile.Personal',{
             url:'/personal/',
             templateUrl:'templates/personal.html',
             controller:'PersonalCtrl',
-            //   resolve:{
-            //           loginRequired: loginRequired
-            //         }
+              resolve:{
+                      loginRequired: loginRequired
+                    }
         });
 
 

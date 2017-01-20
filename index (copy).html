@@ -116,7 +116,7 @@
             #left-sidebar {
                 display: none;
             }
-            table#attendence {
+            table#attendence, #popupContainer{
                 width: 90vw;
             }
             .dayNum{
@@ -134,6 +134,16 @@
                     background-size: 4px, 10px, auto;
     background-position: center;
     height: 15px;
+            }
+            .nav.navbar-nav.navbar-right{
+                margin: auto;
+            }
+            ul#block.dropdown-menu{
+                    width: 100vw;
+    margin-left: -10px;
+            }
+            label{
+                width: 10px;
             }
         }
     </style>
@@ -175,7 +185,7 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <ul class="nav nav-justified" style="font-size: 16px;color: #3B5372 !important;">
+                    <ul class="nav nav-justified" style="margin: auto;font-size: 16px;color: #3B5372 !important;">
                         <li class="activeLi dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
                         <li class="engineers"><a ui-sref=".Engineers">Engineers</a></li>
                         <li class="attendence"><a ui-sref="Attendence">Attendence</a></li>
@@ -189,7 +199,7 @@
     <div class="container-fluid" id="main">
         <div class="row" id="profiletable">
             <div class="col-xs-12 col-lg-3 col-md-3">
-                <label id="menuBar" style="float:right;font-size:30px;cursor:pointer" onclick="openNav()">&#8942;</label>
+                <label class="menuBar" style="float:right;font-size:30px;cursor:pointer" onclick="openNav()">&#8942;</label>
                 <img src="images/emp2.jpg" alt="{{empdetails.employeeName}}" class="img1 image-responsive" />
             </div>
             <div class="col-xs-12 col-lg-9 col-md-9" id="profilehead">
@@ -279,7 +289,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-lg-9 col-md-9">
-                <calendar selected="day"></calendar>
+                <calendar selected="day" style="padding: 10px;"></calendar>
             </div>
         </div>
     </div>

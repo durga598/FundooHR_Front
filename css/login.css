@@ -1,0 +1,113 @@
+body {
+    background-color: white;
+    background-size: initial;
+}
+
+body.login-page {
+    background-color: #D8D1C7;
+    background-size: initial;
+}
+#login-card {
+    width: 300px;
+    height: 396px;
+    border: none;
+    background-color: #D8D1C7 !important;
+}
+
+.login-box {
+    display: inline-block;
+    width: 300px;
+    height: 396px;
+    max-width: 500px;
+    /*margin:-10px;*/
+    /*padding:1em 2em 2em 2em;*/
+    font-family: AppleGothic;
+    /*changing color*/
+    /*margin-top:5%;*/
+}
+
+@media only screen and (max-width: 600px) {
+    #login-card {
+        margin: 5% auto auto 10%;
+    }
+}
+
+.login-box img {
+    /*box-shadow: 1px 1px 1px ;*/
+    -webkit-filter: drop-shadow(4px 4px 4px grey);
+    /*filter: drop-shadow(5px 5px 5px white);*/
+    /*box-shadow: 10px;*/
+    margin-left: 101px;
+    margin-right: 101px;
+}
+
+.login {
+    display: inline-block;
+    width: 300px;
+    height: 290px;
+    background-color: rgba(247, 245, 241, 0.82);
+    color: rgba(59, 83, 114, 1);
+    border-radius: 10px;
+    border: white;
+    box-shadow: 2px 2px 8px 2px gray;
+}
+
+.login div {
+    margin-top: 19px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.login form #input1 {
+    height: 50px;
+    padding-left: 17px;
+    padding-right: 18px;
+    font-size: 18px;
+    color: rgba(59, 83, 114, 1);
+}
+
+.login form md-input-container input {
+    border: none;
+    border-bottom: 1px solid rgba(59, 83, 114, 1);
+}
+
+.login form md-input-container label {
+    color: rgba(59, 83, 114, 1);
+    padding-left: 17px !important;
+    font-weight: 500 !important;
+}
+
+.login form #input2 {
+    height: 35px;
+    padding-left: 17px;
+    padding-right: 18px;
+    font-size: 18px;
+    color: rgba(59, 83, 114, 1);
+}
+
+.login form button {
+    margin-top: 8px;
+    border-radius: 5px;
+    margin-left: 93.5px;
+    width: 113px;
+    height: 41px;
+    font-size: 18px;
+    border: 1px solid rgba(59, 83, 114, 1);
+}
+
+.text-danger {
+    color: rgba(236, 13, 13, 1);
+    font-size: 12px;
+}
+
+.md-raised[disabled] {
+    color: rgba(59, 83, 114, 1);
+    background-color: rgba(247, 245, 241, 0.82);
+}
+
+.md-raised {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(59, 83, 114, 1);
+    /*background-color : black;*/
+}

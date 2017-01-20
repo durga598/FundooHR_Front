@@ -23,8 +23,8 @@
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
           </label>
           <md-input-container>
-                <input placeholder="In Time" type="time" ng-model="punchIn"></md-input-container>
-                <md-input-container><input placeholder="Out Time" type="time" ng-model="punchOut"></md-input-container>
+                <input placeholder="In Time" type="time" ng-model="punchIn" ng-required></md-input-container>
+                <md-input-container><input placeholder="Out Time" type="time" ng-model="punchOut" ng-required></md-input-container>
                 <md-button ng-click="save()" class="md-primary" style="position: absolute;bottom: 0px;left: 30%;">Save</md-button>
             </div>
         </md-dialog-content>

@@ -1,4 +1,4 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
+<!--<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="float:right;">
                    <span class="icon-bar"></span>
@@ -39,4 +39,49 @@
   </div>
 </nav>
 
+<ui-view></ui-view>-->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    style="float:right;">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+    </button>
+                <div class="nav-brand">
+                    <img src="images/logo.png" class="logo">
+                    <span class="FundooHR">FundooHR </span>
+                    </img>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="row" id="top-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="showDate"><span class="glyphicon glyphicon-time"></span><span class="date"> 26,November 2016</span>
+                        </li>
+                        <li class="dropdown" id="showUser">
+                            <span class="dropdown-toggle name" data-toggle="dropdown" id="name">
+          <img src="images/user.png" width="20px" height="20px" />Pranali Patil
+          <label class="caret"></label></span>
+                            <ul class="dropdown-menu" id="block">
+                                <li class="mail">naveennpv.navi@gmail.com</li>
+                                <li>
+                                    <a ui-sref="logout" id="logout"><img src="images/logout web.png" width="12px" height="14px" />logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-justified" style="margin: auto;font-size: 16px;color: #3B5372 !important;">
+                        <li class="activeLi dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
+                        <li class="engineers"><a ui-sref=".Engineers">Engineers</a></li>
+                        <li class="attendence"><a ui-sref="Attendence">Attendence</a></li>
+                        <li class="clients"><a>Clients</a></li>
+                        <li class="reports"><a>Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 <ui-view></ui-view>
+        

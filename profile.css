@@ -1,6 +1,7 @@
 #profiletable{
         border-bottom: solid 5px #D8D1C7;
     margin-left: -30px;
+        width: 100vw;
 }
 #profile2{    height: 160px;
     width: 400px;

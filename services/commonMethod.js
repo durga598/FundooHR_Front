@@ -1,34 +1,17 @@
-angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, $rootScope, $mdDialog,restService) {
+angular.module('mainApp').service('commonMethod', commonMethod);
+function commonMethod($http) {
+    this.readData = function (timestamp) {
+        console.log("read");
 
-    // $rootScope.status = '  ';
-    // $rootScope.customFullscreen = false;
-
-    $scope.day = moment();
-    $rootScope.attendanceData = [];
-    $rootScope.attendance = [];
-  var token = localStorage.getItem('satellizer_token');
-    $scope.readData = function (timeStamp) {
-        var query = {
-            token: token,
-            engineerId:"427188EI",
-            timeStamp : timeStamp
-        }
-        var promise = restService.getRequest('readEmployeeMonthlyAttendance',query);
-        promise.then(function(data){
+        $http({
+            "method": "GET",
+            "url": "http://192.168.0.118:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
+        }).then(function (data) {
+            console.log(data);
             $scope.attendance = data.data.attendanceData;
-        });
-
-        // $http({
-        //     "method": "GET",
-        //     "url": "http://192.168.0.118:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
-        // }).then(function (data) {
-        //     // console.log(data);
-        //     $scope.attendance = data.data.attendanceData;
-        // })
-    }
-
-
-    $scope.checkAttend = function (day) {
+        })
+    };
+    this.checkAttend = function (day) {
         var todayDate = moment();
         $scope.markedStatus = "";
 
@@ -46,10 +29,10 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
             }
         }
     };
-    $scope.someD = function (data, attendanceStatus) {
+    this.someD = function (data, attendanceStatus) {
         var dataNumber = JSON.parse(data);
         $scope.id = dataNumber.number;
-       
+        console.log('date id ', dataNumber.number);
 
         if (attendanceStatus === "Present") {
             $mdDialog.show({
@@ -61,7 +44,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                 disableParentScroll: false,
                 controller: function ($scope) {
                     $scope.save = function () {
-                        
+                        console.log("called save");
                         postData("f12sd1fd2sf1", dataNumber.timeStamp, "427188EI", attendanceStatus, "true", $scope.punchIn, $scope.punchOut, "NA");
                         
                         angular.element(document.getElementById($scope.id)).removeAttr('class');
@@ -83,6 +66,8 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                 preserveScope: true,
                 controller: function ($scope) {
                     $scope.save = function () {
+                        console.log($scope.reason);
+                        console.log("called save");
                         postData("f12sd1fd2sf1", dataNumber.timeStamp, "427188EI", attendanceStatus, "true", "-", "-", $scope.reason); 
                         angular.element(document.getElementById($scope.id)).removeAttr('class');
                         angular.element(document.getElementById($scope.id)).addClass(attendanceStatus);
@@ -96,8 +81,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
             });
         }
     };
-
-    function postData(token, timeStamp, engineerId, attendanceStatus, markedStatus, punchIn, punchOut, reason) {
+    this.postData = function (token, timeStamp, engineerId, attendanceStatus, markedStatus, punchIn, punchOut, reason) {
         obj = {};
         obj["token"] = token;
         obj["timeStamp"] = timeStamp * 1000;
@@ -109,21 +93,16 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         obj["reason"] = reason;
 
         console.log(obj);
-        var promise = restService.postRequest('createEmployeeDayAttendance',obj);
-        promise.then(function(data){
+        $http({
+            "method": "POST",
+            "url": "http://192.168.0.118:3000/createEmployeeDayAttendance",
+            "data": obj,
+        }).then(function (data) {
             console.log(data);
-        });
-        // $http({
-        //     "method": "POST",
-        //     "url": "http://192.168.0.118:3000/createEmployeeDayAttendance",
-        //     "data": obj,
-        // }).then(function (data) {
-        //     console.log(data);
-        //     //$scope.attendance = data.data.attendanceData;
-        // })
-    }
-
-    function getTime(date) {
+            //$scope.attendance = data.data.attendanceData;
+        })
+    };
+    this.getTime = function (date) {
         console.log(date);
         if (date === "-") {
             return "-";
@@ -148,4 +127,5 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         }
     }
 
-});
+
+}

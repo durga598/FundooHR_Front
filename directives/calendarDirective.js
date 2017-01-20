@@ -9,10 +9,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
         link: function (scope) {
 
             scope.readData(Date.now());
-
-            scope.inc = 0;
             scope.$watch("attendance", function (data, newData) {
-                console.log("called link" + scope.inc++);
 
                 if (scope.called === undefined) {
                     scope.selected = _removeTime(scope.selected || moment());
@@ -55,17 +52,17 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                     //     .disableParentScroll(false)
                     // );
                     $mdDialog.show({
-                            controller: function(scope){
-                                console.log("Called ",day);
+                            controller: function (scope) {
+                                console.log("Called ", day);
                                 scope.punchIn = day.status.punchIn;
                                 scope.punchOut = day.status.punchOut;
-                                scope.cancel = function(){
-                                   $mdDialog.cancel();
+                                scope.cancel = function () {
+                                    $mdDialog.cancel();
 
                                 }
                             },
                             templateUrl: 'partials/presentPopUp.html',
-                            parent: angular.element(document.querySelector('#attendence')),
+                            parent: angular.element(document.querySelector('#popupContainer')),
                             targetEvent: ev,
                             clickOutsideToClose: true,
                             disableParentScroll: false
@@ -89,16 +86,16 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                     //     .disableParentScroll(false)
                     // );
                     $mdDialog.show({
-                            controller: function(scope){
-                                console.log("Called ",day);
+                            controller: function (scope) {
+                                console.log("Called ", day);
                                 scope.reason = day.status.reason;
-                                scope.cancel = function(){
+                                scope.cancel = function () {
                                     console.log("called");
-                                   $mdDialog.cancel();
+                                    $mdDialog.cancel();
                                 }
                             },
                             templateUrl: 'partials/absentPopUp.html',
-                            parent: angular.element(document.querySelector('#attendence')),
+                            parent: angular.element(document.querySelector('#popupContainer')),
                             targetEvent: ev,
                             clickOutsideToClose: true,
                             disableParentScroll: false
@@ -112,16 +109,8 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                 }
             };
 
-
-
-
-            scope.select = function (day) {
-
-
-            };
-
-
-
+            // scope.select = function (day) {
+            // };
 
             //Function to show next month
             scope.next = function () {
@@ -147,8 +136,6 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
     };
 
-
-
     function _removeTime(date) {
         return date.day(0).hour(0).minute(0).second(0).millisecond(0);
     }
@@ -169,46 +156,46 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             monthIndex = date.month();
 
         }
-console.log(scope.weeks);
+        // console.log(scope.weeks);
 
     }
 
     //Build week with array of days
     function _buildWeek(date, month, scope) {
-
         var days = [];
-        for (var i = 0; i < 7; i++) {
-
-
-            if (date.month() === month.month() && (scope.attendance[date.date()] !== undefined)) {
-                if (scope.attendance[date.date()] !== undefined)
+        if (scope.attendance !== undefined) {
+            for (var i = 0; i < 7; i++) {
+                //console.log(scope.attendance, k++);
+                if (date.month() === month.month() && (scope.attendance[date.date()] !== undefined)) {
+                    if (scope.attendance[date.date()] !== undefined)
+                        days.push({
+                            name: date.format("dd").substring(0, 1),
+                            number: date.date(),
+                            isCurrentMonth: date.month() === month.month(),
+                            isToday: date.isSame(new Date(), "day"),
+                            timeStamp: date.unix(),
+                            date: date,
+                            enable: true,
+                            status: scope.attendance[date.date()]
+                        });
+                } else if (date.month() === month.month())
                     days.push({
                         name: date.format("dd").substring(0, 1),
                         number: date.date(),
                         isCurrentMonth: date.month() === month.month(),
+                        timeStamp: date.unix(),
                         isToday: date.isSame(new Date(), "day"),
-                        timeStamp:date.unix(),
                         date: date,
                         enable: true,
-                        status: scope.attendance[date.date()]
+                        status: ''
+
                     });
-            } else if (date.month() === month.month())
-                days.push({
-                    name: date.format("dd").substring(0, 1),
-                    number: date.date(),
-                    isCurrentMonth: date.month() === month.month(),
-                    timeStamp:date.unix(),
-                    isToday: date.isSame(new Date(), "day"),
-                    date: date,
-                    enable: true,
-                    status: ''
+                else
+                    days.push({});
 
-                });
-            else
-                days.push({});
-
-            date = date.clone();
-            date.add(1, "d");
+                date = date.clone();
+                date.add(1, "d");
+            }
         }
         return days;
     }
