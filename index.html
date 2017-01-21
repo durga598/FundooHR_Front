@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="attend.css">
         <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="css/loader.css">
 
 
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.min.css">
@@ -18,148 +19,10 @@
     <!--<link rel="stylesheet" href="css/attendence.css">-->
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/homeCard.css">
-    <style>
-        .activeLi {
-            border-width: 10px;
-            border-bottom: solid rgba(59, 83, 114, 1);
-        }
-        body {
-            padding-top: 90px;
-        }
-
-        .activeLi {
-            border-width: 10px;
-            border-bottom: solid rgba(59, 83, 114, 1);
-            transition: 0.3s ease;
-        }
-
-        .sidenav {
-            height: auto;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidenav img {
-            width: 1em;
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            color: #818181;
-            display: block;
-            transition: 0.3s
-        }
-
-        .sidenav a:hover,
-        .offcanvas a:focus {
-            color: #f1f1f1;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 0px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .sidenav ul {
-            text-indent: 1em;
-            font-size: 2em;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-
-        .sidenav.anchor {
-            color: #D8D1C7!important;
-            opacity: 100;
-            text-align: left;
-            font-family: LucidaGrande-Bold;
-            font-size: 18px;
-        }
-
-        #menuBar {
-            color: white;
-            right: 15;
-            position: absolute;
-            float: right;
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-        @media screen and (min-width: 768px) {
-            .sidenav {
-                display: none;
-            }
-            #menuBar {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 767px) {
-            #profiletable img {
-                object-fit: cover;
-                display: block;
-                margin: auto;
-                height: 60vh;
-                width: 100vw;
-            }
-            #profileDetail {
-                display: none;
-            }
-            #left-sidebar {
-                display: none;
-            }
-            table#attendence, #popupContainer{
-                width: 90vw;
-            }
-            .dayNum{
-                font-size: 16px;
-            }
-            .Present,.CompLeave{
-                    background-size: 12px, 22px, auto;
-    height: 15px;
-            }
-            .Leave{
-                    background-size: 9px, 20px, auto;
-    height: 15px;
-            }
-            .unmark{
-                    background-size: 4px, 10px, auto;
-    background-position: center;
-    height: 15px;
-            }
-            .nav.navbar-nav.navbar-right{
-                margin: auto;
-            }
-            ul#block.dropdown-menu{
-                    width: 100vw;
-    margin-left: -10px;
-            }
-            label{
-                width: 10px;
-            }
-        }
-    </style>
 </head>
 
 <body ng-app="mainApp" class="{{bodyClass}}" ng-controller="GlobalCtrl" ng-cloak layout="column">
-    <div class="container">
+    <div class="container-fluid">
         <ui-view></ui-view>
     </div>
 </body>
@@ -195,16 +58,9 @@
 <script src="services/restService.js"> </script>
 <script src="directives/calendarDirective.js"></script>
 <script src="directives/cardDir.js"></script>
-<script src="directives/focus.js"></script>
 <script src="directives/attendence.js"></script>
 <script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-        $("ul.nav.nav-justified li").on("click", function() {
-            $("ul.nav.nav-justified li").removeClass("activeLi");
-            $(this).addClass("activeLi");
-        });
-    });
+    
     $(document).on('click', function() {
         $('.collapse').collapse('hide');
     });

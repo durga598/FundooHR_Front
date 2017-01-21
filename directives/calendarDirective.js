@@ -7,8 +7,9 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             data: "="
         },
         link: function (scope) {
+            scope.loaderEnable = true;
 
-            scope.readData(Date.now());
+            //scope.readData(Date.now());
             scope.$watch("attendance", function (data, newData) {
 
                 if (scope.called === undefined) {
@@ -39,18 +40,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
 
                 if (day.status.attendanceStatus === "Present") {
-                    // .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
-                    // $mdDialog.show(
-                    //     $mdDialog.alert()
-                    //     .parent(angular.element(document.querySelector('#popupContainer')))
-                    //     .clickOutsideToClose(true)
-                    //     .htmlContent('In Time: ' + day.status.punchIn + '<br>Out Time:' + day.status.punchOut+'')
-
-                    //     .ariaLabel('Alert Dialog Demo')
-                    //     .ok('OK')
-                    //     .targetEvent(ev)
-                    //     .disableParentScroll(false)
-                    // );
+                    
                     $mdDialog.show({
                             controller: function (scope) {
                                 console.log("Called ", day);
@@ -75,16 +65,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                         });
 
                 } else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
-                    // $mdDialog.show(
-                    //     $mdDialog.alert()
-                    //     .parent(angular.element(document.querySelector('#popupContainer')))
-                    //     .clickOutsideToClose(true)
-                    //     .htmlContent('sdfsdf<span class="glyphicons glyphicons-remove"></span>')
-                    //     .ariaLabel('Alert Dialog Demo')
-                    //     .ok('OK')
-                    //     .targetEvent(ev)
-                    //     .disableParentScroll(false)
-                    // );
+                    
                     $mdDialog.show({
                             controller: function (scope) {
                                 console.log("Called ", day);
@@ -102,9 +83,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
                         })
                         .then(function (answer) {
-                            // $scope.status = 'You said the information was "' + answer + '".';
                         }, function () {
-                            // $scope.status = 'You cancelled the dialog.';
                         });
                 }
             };
@@ -114,6 +93,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
             //Function to show next month
             scope.next = function () {
+                scope.loaderEnable= true;
                 scope.called = 0;
                 console.log("1");
                 var next = scope.month.clone();
@@ -125,6 +105,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
             //Function to show previous month
             scope.previous = function () {
+                scope.loaderEnable= true;
                 scope.called = 1;
                 console.log("1");
                 var previous = scope.month.clone();

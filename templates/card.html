@@ -1,14 +1,14 @@
-<div>
+<div><span>
 <a ui-sref="home.Profile({ portfolioId:value.engineerId})">
-    <img ng-src="{{value.image}}" alt="{{value.employeeName}}" /></a>
+    <img ng-src="{{value.image}}" alt="{{value.employeeName}}" style="max-width: 100px;max-height: 150px;"/></a></span>
 
 
-
-    <h3>{{value.engineerId}}</h3>
-    <h3>{{value.employeeName}}</h3>
-    <h3>{{value.employeeStatus}}</h3>
-    <h3>{{value.company}}</h3>
-    <h3>{{value.mobile}}</h3>
-    <h3>{{value.emailId}}</h3>
-
+<span>
+    <label>{{value.engineerId}}</label><br>
+    <label>{{value.employeeName}}</label><br>
+    <label>{{value.employeeStatus}}</label><br>
+    <label>{{value.company}}</label><br>
+    <label>{{value.mobile}}</label><br>
+    <label>{{value.emailId}}</label>
+</span>
 </div>

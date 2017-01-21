@@ -26,22 +26,7 @@ table#attendence {
     border-collapse: separate;
     table-layout: fixed;
 }
-/*@media only screen and (max-width: 850px) {
-    table#attendence {
-    font-family: 'AppleGothic';
-    font-size: 24px;
-    color: rgba(111, 184, 217, 1);
-    text-align: right;
-    width: 623px;
-    height: 430px;
-    border-radius: 8px !important;
-    opacity: 100;
-    border: solid 3px rgba(180, 221, 239, 0.99) !important;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-    border-collapse: separate;
-    table-layout: fixed;
-    }
-}*/
+
 
 table#attendence td,
 table#attendence th {

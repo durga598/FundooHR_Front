@@ -16,6 +16,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         var promise = restService.getRequest('readEmployeeMonthlyAttendance',query);
         promise.then(function(data){
             $scope.attendance = data.data.attendanceData;
+            $scope.loaderEnable = false ;
         });
 
         // $http({

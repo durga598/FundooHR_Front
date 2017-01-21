@@ -1,4 +1,5 @@
 <div id="popupContainer">
+
     <div class="btn-edit" style="float:right;">
         <button id="calenderEdit" type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
          <span  id="symbol" class="glyphicon glyphicon-pencil">
@@ -12,7 +13,8 @@
     <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
         <table id="attendence">
             <tbody>
-                <tr class="week" ng-repeat="week in weeks" style="height:20%">
+                <tr ng-if="loaderEnable==true"><td><div class="loader"></div></td></tr>
+                <tr ng-if="loaderEnable==false" class="week" ng-repeat="week in weeks" style="height:20%">
                     <td class="day" e-form="tableform" ng-repeat="day in week.days" style="width:14.285%">
                         <span class="dayNum" ng-class="checkAttend(day)">{{day.number}}</span>
                         <div class="status">
