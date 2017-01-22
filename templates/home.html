@@ -1,45 +1,3 @@
-<!--<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="float:right;">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-      </button>
-    <div class="nav-brand">
-      <img src="images/logo.png" width="43px" height="47px" class="logo">
-      <span>FundooHR </span>
-      </img>
-    </div>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right" id="top-nav">
-      <li><a class="date"><span class="glyphicon glyphicon-time">{{ today | date : "dd,MMMM y" }}</span>  </a>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle name" data-toggle="dropdown" id="name">
-          <img src="images/user.png" width="20px" height="20px" />{{name}}
-          <span class="caret"></span></a>
-        <ul class="dropdown-menu" id="block">
-          <li class="mail">naveennpv.navi@gmail.com</li>
-          <li ng-if="isAuth()">
-            <a ui-sref="logout" id="logout"><img src="images/logout web.png" width="12px" height="14px" />logout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <div class="row">
-      <ul class="nav  nav-justified">
-        <li class="activeLi"><a ui-sref=".DashBoard">DashBoards</a></li>
-        <li><a ui-sref=".Engineers">Engineers</a></li>
-        <li><a ui-sref="Attendence">Attendence</a></li>
-        <li><a>Clients</a></li>
-        <li><a>Reports</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<ui-view></ui-view>-->
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-fixed-width">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -74,11 +32,12 @@
     </div>
     <div class="row">
       <ul class="nav nav-justified" style="margin: auto;font-size: 16px;color: #3B5372 !important;">
-        <li   class="activeLi dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
-        <li class=" engineers"><a ui-sref=".Engineers">Engineers</a></li>
-        <li  class="attendence"><a ui-sref="Attendence">Attendence</a></li>
-        <li  class="clients"><a>Clients</a></li>
-        <li  class="reports"><a>Reports</a></li>
+        <li  ng-class="{activeLi: $state.includes('home.DashBoard')}"  class=" dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
+        <li ng-class="{activeLi: ('home.Engineers' | 
+includedByState) || ('home.Profile' | includedByState)}"><a ui-sref=".Engineers">Engineers</a></li>
+        <li ng-class="{activeLi: $state.includes('Attendence')}"><a ui-sref="Attendence">Attendence</a></li>
+        <li  ng-class="{activeLi: $state.includes('')}"><a>Clients</a></li>
+        <li ng-class="{activeLi: $state.includes('')}"><a>Reports</a></li>
       </ul>
     </div>
   </div>

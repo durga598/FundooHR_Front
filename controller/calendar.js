@@ -1,7 +1,6 @@
 angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, $rootScope, $mdDialog,restService) {
 
-    // $rootScope.status = '  ';
-    // $rootScope.customFullscreen = false;
+   
 
     $scope.day = moment();
     $rootScope.attendanceData = [];
@@ -19,13 +18,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
             $scope.loaderEnable = false ;
         });
 
-        // $http({
-        //     "method": "GET",
-        //     "url": "http://192.168.0.118:3000/readEmployeeMonthlyAttendance?token=f12sd1fd2sf1&engineerId=427188EI&timeStamp=" + timestamp
-        // }).then(function (data) {
-        //     // console.log(data);
-        //     $scope.attendance = data.data.attendanceData;
-        // })
+        
     }
 
 
@@ -114,14 +107,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         promise.then(function(data){
             console.log(data);
         });
-        // $http({
-        //     "method": "POST",
-        //     "url": "http://192.168.0.118:3000/createEmployeeDayAttendance",
-        //     "data": obj,
-        // }).then(function (data) {
-        //     console.log(data);
-        //     //$scope.attendance = data.data.attendanceData;
-        // })
+       
     }
 
     function getTime(date) {

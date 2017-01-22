@@ -4,5 +4,7 @@ angular.module('mainApp').controller('HomeCtrl', function ($scope, $location, $s
   };
   $scope.today = new Date();
   $scope.name = "Durga";
+  $scope.$state = $state;
+  console.log($scope.$state.includes('home.DashBoard'));
   // $state.go('home.DashBoard')
 });

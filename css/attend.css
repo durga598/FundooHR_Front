@@ -8,7 +8,7 @@ md-backdrop.md-dialog-backdrop .md-opaque {
 
 #popupContainer {
     width: 60vw;
-    height: 50vh;
+    height: 60vh;
     z-index: 1000;
 }
 
@@ -72,28 +72,28 @@ span.dateShow {
 }
 
 .Present {
-    background: url(assets/ion-checkmark-round.png) no-repeat;
+    background: url(../assets/ion-checkmark-round.png) no-repeat;
     background-size: 17px, 21px, auto;
     background-position: center;
     height: 21px;
 }
 
 .Leave {
-    background: url(assets/L.png) no-repeat;
+    background: url(../assets/L.png) no-repeat;
     background-size: 12px, 23px, auto;
     background-position: center;
     height: 17px;
 }
 
 .CompLeave {
-    background: url(assets/C.png) no-repeat;
+    background: url(../assets/C.png) no-repeat;
     background-size: 17px, 21px, auto;
     background-position: center;
     height: 21px;
 }
 
 .unmark {
-    background: url(assets/ion-alert.png) no-repeat;
+    background: url(../assets/ion-alert.png) no-repeat;
     background-size: 7px, 10px, auto;
     background-position: center;
     height: 17px;
@@ -339,4 +339,21 @@ body {
     table#attendence {
         height: 50vh;
     }
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+#profile1 {
+    width: 300px;
+}
+#profile2 {
+    width: 300px;
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
 }

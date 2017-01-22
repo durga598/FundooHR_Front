@@ -38,7 +38,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             //show dialog according to attendance status
             scope.showAlert = function (ev, day) {
 
-
+                //show dialog for attendance status Present
                 if (day.status.attendanceStatus === "Present") {
                     
                     $mdDialog.show({
@@ -64,7 +64,9 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                             scope.status = 'You cancelled the dialog.';
                         });
 
-                } else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
+                } 
+                //show dialog for attendance status Leave or CompLeave
+                else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
                     
                     $mdDialog.show({
                             controller: function (scope) {
@@ -95,7 +97,6 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             scope.next = function () {
                 scope.loaderEnable= true;
                 scope.called = 0;
-                console.log("1");
                 var next = scope.month.clone();
 
                 scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
@@ -107,10 +108,8 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             scope.previous = function () {
                 scope.loaderEnable= true;
                 scope.called = 1;
-                console.log("1");
                 var previous = scope.month.clone();
                 scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
-                console.log("2");
             };
         },
         controller: "AttendenceCtrl"
@@ -159,7 +158,8 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                             enable: true,
                             status: scope.attendance[date.date()]
                         });
-                } else if (date.month() === month.month())
+                } 
+                else if (date.month() === month.month())
                     days.push({
                         name: date.format("dd").substring(0, 1),
                         number: date.date(),
