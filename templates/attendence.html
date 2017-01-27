@@ -14,7 +14,7 @@
         <table id="attendence">
             <tbody>
                 <tr ng-if="loaderEnable==true"><td><div class="loader"></div></td></tr>
-                <tr ng-if="loaderEnable==false" class="week" ng-repeat="week in weeks" style="height:20%">
+                <tr ng-if="loaderEnable==false" class="week" ng-repeat="week in weeks">
                     <td class="day" e-form="tableform" ng-repeat="day in week.days" style="width:14.285%">
                         <span class="dayNum" ng-class="checkAttend(day)">{{day.number}}</span>
                         <div class="status">
@@ -30,7 +30,7 @@
         </table>
         <div class="btn-form" ng-show="tableform.$visible">
             <button type="button" id="calenderCancel" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn">Cancel</button>
-            <button type="submit" id="calenderSave" ng-disabled="tableform.$waiting" class="btn">Save</button>
+            <button type="submit" id="calenderSave" ng-disabled="tableform.$waiting" class="btn" ng-click="reload()">Save</button>
         </div>
     </form>
 </div>

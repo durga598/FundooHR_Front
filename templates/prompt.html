@@ -1,17 +1,21 @@
 <md-dialog>
-    <form ng-cloak>
+    <form ng-cloak name="myForm" >
         <md-dialog-content>
-
             <div class="md-dialog-content" id="popupStatus">
-
                 <label style="float:right;position:fixed;margin: -15px;right:20%;">
                <md-button class="md-icon-button" ng-click="cancel()">
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
           </label>
-          <md-input-container>
-                <input placeholder="In Time" type="time" ng-model="punchIn" ng-required></md-input-container>
-                <md-input-container><input placeholder="Out Time" type="time" ng-model="punchOut" ng-required></md-input-container>
-                <md-button ng-click="save()" class="md-primary" style="position: absolute;bottom: 0px;left: 30%;">Save</md-button>
+                <md-input-container class="popUpIn" ng-if="showPrompt">
+                    <input placeholder="In Time(00:00)" type="time" ng-model="$parent.punchIn" ng-required="!$parent.reason"></md-input-container>
+                    <br>
+                <md-input-container class="popUpIn" ng-if="showPrompt"><input placeholder="Out Time(00:00)" type="time" ng-model="$parent.punchOut" ng-required="!$parent.reason"></md-input-container>
+                <md-input-container class="popUp" ng-if="!showPrompt">
+                    <div style="overflow:auto;">
+                        <label style="font-weight: bold;">Reason</label>
+                        <textarea ng-model="$parent.reason" ng-required="!($parent.punchIn || $parent.punchOut)"></textarea></div>
+                </md-input-container>
+                <md-button ng-click="save()" class="md-primary" style="position: absolute;bottom: 0px;left: 30%;" ng-disabled="myForm.$invalid">Save</md-button>
             </div>
         </md-dialog-content>
     </form>

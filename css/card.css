@@ -1,0 +1,22 @@
+.cardBox {
+    background-color: rgba(240, 237, 234, 1);
+    box-shadow: .5px .5px .5px .5px grey;
+    display: inline-block;
+    width: 310px;
+    margin: 2%;
+    border-radius: 5px;
+}
+
+.cardBox div {
+    display: inline-block
+}
+
+.cardData {
+    height: 130px;
+    width: 185px;
+    margin-top: 4%;
+    overflow: hidden;
+}
+.cardData span{
+    color: #3B5372 !important; 
+}

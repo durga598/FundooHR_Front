@@ -7,25 +7,32 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             data: "="
         },
         link: function (scope) {
+            //**For Loader **//
             scope.loaderEnable = true;
 
-            //scope.readData(Date.now());
-            scope.$watch("attendance", function (data, newData) {
+            scope.readData(Date.now());
 
-                if (scope.called === undefined) {
+            //** change calendar data everytime according to attendance status**//
+            scope.$watch("attendance", function (data, newData) {
+                //**Loads for first time**//
+                if (scope.called === undefined || scope.called === 3) {
                     scope.selected = _removeTime(scope.selected || moment());
                     scope.month = scope.selected.clone();
                     var start = scope.selected.clone();
                     start.date(1);
                     _removeTime(start.day(0));
                     _buildMonth(scope, start, scope.month);
-
-                } else if (scope.called === 0) {
+                }
+                //**Loads when next function called for next month**//                
+                else if (scope.called === 0) {
                     var next = scope.month.clone();
+
                     _removeTime(next.month(next.month() + 1).date(1));
                     scope.month.month(scope.month.month() + 1);
                     _buildMonth(scope, next, scope.month);
-                } else if (scope.called === 1) {
+                }
+                //**Loads when previous function called for previous month**//
+                else if (scope.called === 1) {
                     var previous = scope.month.clone();
                     _removeTime(previous.month(previous.month() - 1).date(1));
                     scope.month.month(scope.month.month() - 1);
@@ -40,10 +47,9 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
                 //show dialog for attendance status Present
                 if (day.status.attendanceStatus === "Present") {
-                    
+
                     $mdDialog.show({
                             controller: function (scope) {
-                                console.log("Called ", day);
                                 scope.punchIn = day.status.punchIn;
                                 scope.punchOut = day.status.punchOut;
                                 scope.cancel = function () {
@@ -64,16 +70,15 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                             scope.status = 'You cancelled the dialog.';
                         });
 
-                } 
+                }
                 //show dialog for attendance status Leave or CompLeave
                 else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
-                    
+
                     $mdDialog.show({
                             controller: function (scope) {
-                                console.log("Called ", day);
+                                //console.log("Called ", day);
                                 scope.reason = day.status.reason;
                                 scope.cancel = function () {
-                                    console.log("called");
                                     $mdDialog.cancel();
                                 }
                             },
@@ -84,9 +89,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                             disableParentScroll: false
 
                         })
-                        .then(function (answer) {
-                        }, function () {
-                        });
+                        .then(function (answer) {}, function () {});
                 }
             };
 
@@ -95,22 +98,28 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
             //Function to show next month
             scope.next = function () {
-                scope.loaderEnable= true;
+                console.log(scope.timeStampData);
+                scope.loaderEnable = true;
                 scope.called = 0;
                 var next = scope.month.clone();
-
                 scope.readData(next.month(next.month() + 1).date(1).unix() * 1000);
-
-
             };
 
             //Function to show previous month
             scope.previous = function () {
-                scope.loaderEnable= true;
+                console.log(scope.timeStampData);
+                scope.loaderEnable = true;
                 scope.called = 1;
                 var previous = scope.month.clone();
                 scope.readData(previous.month(previous.month() - 1).date(1).unix() * 1000);
             };
+
+            scope.reload = function () {
+                console.log("called");
+
+                scope.called = 3;
+                scope.readData(scope.timeStampData);
+            }
         },
         controller: "AttendenceCtrl"
 
@@ -136,16 +145,15 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             monthIndex = date.month();
 
         }
-        // console.log(scope.weeks);
 
     }
 
     //Build week with array of days
     function _buildWeek(date, month, scope) {
+
         var days = [];
         if (scope.attendance !== undefined) {
             for (var i = 0; i < 7; i++) {
-                //console.log(scope.attendance, k++);
                 if (date.month() === month.month() && (scope.attendance[date.date()] !== undefined)) {
                     if (scope.attendance[date.date()] !== undefined)
                         days.push({
@@ -158,8 +166,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                             enable: true,
                             status: scope.attendance[date.date()]
                         });
-                } 
-                else if (date.month() === month.month())
+                } else if (date.month() === month.month())
                     days.push({
                         name: date.format("dd").substring(0, 1),
                         number: date.date(),

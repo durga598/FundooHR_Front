@@ -1,10 +1,10 @@
-angular.module('mainApp').controller('HomeCtrl', function ($scope, $location, $stateParams, $state, $auth) {
+angular.module('mainApp').controller('HomeCtrl', function ($scope, $location, $stateParams, $state, $auth,$rootScope) {
   $scope.isAuth = function () {
     return $auth.isAuthenticated();
   };
   $scope.today = new Date();
-  $scope.name = "Durga";
   $scope.$state = $state;
-  console.log($scope.$state.includes('home.DashBoard'));
+  $rootScope.email = localStorage.getItem("email");
+$rootScope.name = $rootScope.email.split("@")[0];
   // $state.go('home.DashBoard')
 });

@@ -5,29 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title> FundooHr </title>
+    <link rel="icon" type="image/png" href="assets/FH.png">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <!--<link rel="stylesheet" href="css/styles.css">-->
-        <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/attend.css">
-        <link rel="stylesheet" href="css/profile.css">
-        <link rel="stylesheet" href="css/loader.css">
-
-
+    <!--css for editable table form-->
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
     <!--<link rel="stylesheet" href="css/attendence.css">-->
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/homeCard.css">
+     <link rel="stylesheet" href="css/navbar.css">
+     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/attend.css">
+    <link rel="stylesheet" href="css/card.css">
+    <!--css for timepicker-->
+    <link rel="stylesheet" href="assets/jquery.timeentry.css">    
+    <link rel="stylesheet" href="css/loader.css">
+    
 </head>
 
-<body ng-app="mainApp" class="{{bodyClass}}" ng-controller="GlobalCtrl" ng-cloak layout="column">
+<body ng-app="mainApp" class={{bodyClass}} ng-controller="GlobalCtrl" ng-cloak layout="column">
     <div class="container-fluid">
         <ui-view></ui-view>
     </div>
 </body>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--javascript for time picker-->
+<script src="assets/jquery.plugin.js"></script>
+<script src="assets/jquery.timeentry.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/hammerjs/hammer.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
@@ -43,6 +51,8 @@
 <script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
 <script src="bower_components/svg-assets-cache.js/svg-assets-cache.js"></script>
 <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<!--used for scroll fix(UI Scroll Fix)-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
 <script type="text/javascript" src="bower_components/moment/moment.js"></script>
 <script src="app.js"></script>
 <script src="controller/loginCtrl.js"></script>
@@ -54,8 +64,8 @@
 <script src="controller/personalCtrl.js"></script>
 <script src="controller/engineersCtrl.js"></script>
 <script src="controller/calendar.js"></script>
-<script src="services/sharedService.js"> </script>
 <script src="services/restService.js"> </script>
+<script src="services/sharedService.js"> </script>
 <script src="directives/calendarDirective.js"></script>
 <script src="directives/cardDir.js"></script>
 <script src="directives/attendence.js"></script>

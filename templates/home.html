@@ -19,12 +19,12 @@
         </li>
         <li class="dropdown" id="showUser">
           <span class="dropdown-toggle name" data-toggle="dropdown" id="name">
-          <img src="images/user.png" width="20px" height="20px" />Pranali Patil
+          <img src="images/user.png" width="20px" height="20px" />{{name}}
           <label class="caret"></label></span>
           <ul class="dropdown-menu" id="block">
-            <li class="mail">durga598@gmail.com</li>
+            <li class="mail" >{{email}}</li>
             <li>
-              <a ui-sref="logout" id="logout"><img src="images/logout web.png" width="12px" height="14px" />logout</a>
+              <a ui-sref="logout" id="logout"><img src="images/logout web.png" width="12px" height="14px" style="margin-right: 7px;"/>logout</a>
             </li>
           </ul>
         </li>
@@ -33,8 +33,7 @@
     <div class="row">
       <ul class="nav nav-justified" style="margin: auto;font-size: 16px;color: #3B5372 !important;">
         <li  ng-class="{activeLi: $state.includes('home.DashBoard')}"  class=" dashboard"><a ui-sref=".DashBoard">DashBoards</a></li>
-        <li ng-class="{activeLi: ('home.Engineers' | 
-includedByState) || ('home.Profile' | includedByState)}"><a ui-sref=".Engineers">Engineers</a></li>
+        <li ng-class="{activeLi: ('home.Engineers' | includedByState) || ('home.Profile' | includedByState)}"><a ui-sref=".Engineers">Engineers</a></li>
         <li ng-class="{activeLi: $state.includes('Attendence')}"><a ui-sref="Attendence">Attendence</a></li>
         <li  ng-class="{activeLi: $state.includes('')}"><a>Clients</a></li>
         <li ng-class="{activeLi: $state.includes('')}"><a>Reports</a></li>

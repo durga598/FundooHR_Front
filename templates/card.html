@@ -1,14 +1,15 @@
-<div><span>
-<a ui-sref="home.Profile({ portfolioId:value.engineerId})">
-    <img ng-src="{{value.image}}" alt="{{value.employeeName}}" style="max-width: 100px;max-height: 150px;"/></a></span>
-
-
-<span>
-    <label>{{value.engineerId}}</label><br>
-    <label>{{value.employeeName}}</label><br>
-    <label>{{value.employeeStatus}}</label><br>
-    <label>{{value.company}}</label><br>
-    <label>{{value.mobile}}</label><br>
-    <label>{{value.emailId}}</label>
-</span>
+<div class="cardBox">
+    <a ui-sref="home.Profile({ portfolioId:value.engineerId})">
+        <div style="float:left;margin: 4%;">
+            <img src="images/emp2.jpg" alt="{{value.employeeName}}" style="max-width: 100px;max-height: 120px;" />
+        </div>
+        <div class="cardData">
+            <span>{{value.engineerId}}</span><br>
+            <span>{{value.employeeName}}</span><br>
+            <span>{{value.employeeStatus}}</span><br>
+            <span>{{value.company}}</span><br>
+            <span>{{value.mobile}}</span><br>
+            <span>{{value.emailId}}</span>
+        </div>
+    </a>
 </div>

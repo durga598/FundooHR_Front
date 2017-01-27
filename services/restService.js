@@ -1,7 +1,8 @@
 angular.module('mainApp').service('restService', restService);
 function restService($http,$log,$q){
-    var baseUrl= "http://192.168.0.9:3000/";
+    var baseUrl= "http://192.168.0.17:3000/";
     this.getRequest = function(path,query){
+        console.log(path,query);
         var deferred = $q.defer();
         $http({
             method: "GET",

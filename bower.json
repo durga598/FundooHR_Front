@@ -29,6 +29,7 @@
     "satellizer": "^0.15.5",
     "moment": "^2.17.1",
     "font-awesome": "fontawesome#^4.7.0",
-    "svg-assets-cache.js": "svg-assets-cache#*"
+    "svg-assets-cache.js": "svg-assets-cache#*",
+    "angular-ui-utils": "^3.0.0"
   }
 }

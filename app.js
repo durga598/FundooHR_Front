@@ -1,5 +1,6 @@
-var mainApp = angular.module("mainApp", ['ui.router', 'ngMaterial', 'ngAnimate', 'ngAria', 'ngMessages', 'satellizer','toastr','xeditable','material.svgAssetsCache', 'ngSanitize']);
+var mainApp = angular.module("mainApp", ['ui.router', 'ngMaterial', 'ngAnimate', 'ngAria', 'ngMessages', 'satellizer','toastr','xeditable','material.svgAssetsCache', 'ngSanitize','ui.scrollfix']);
 mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $authProvider) {
+    // used satellizer for authentication
     var skipIfLoggedIn = ['$q', '$auth', function ($q, $auth) {
         var deferred = $q.defer();
         if ($auth.isAuthenticated()) {
@@ -21,7 +22,7 @@ mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $au
     }];
 
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/dash');
     $stateProvider
         .state('login', {
             url: '/login',
@@ -80,7 +81,7 @@ mainApp.config( function ($stateProvider, $urlRouterProvider, $httpProvider, $au
         .state('home.Profile.Personal',{
             url:'/personal/',
             templateUrl:'templates/personal.html',
-            controller:'PersonalCtrl',
+            // controller:'PersonalCtrl',
               resolve:{
                       loginRequired: loginRequired
                     }

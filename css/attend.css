@@ -18,7 +18,7 @@ table#attendence {
     color: rgba(111, 184, 217, 1);
     text-align: right;
     width: 60vw;
-    height: 60vh;
+    height: 70vh;
     border-radius: 8px !important;
     opacity: 100;
     border: solid 3px rgba(180, 221, 239, 0.99) !important;
@@ -66,7 +66,7 @@ span.dateShow {
 }
 
 .status span {
-    margin-top: 2px;
+    margin-top: 5px;
     display: block;
     text-align: center;
 }
@@ -295,7 +295,7 @@ body {
     #profiletable img {
         object-fit: cover;
         display: block;
-        margin: auto;
+        /*margin: auto;*/
         height: 60vh;
         width: 100vw;
     }
@@ -339,21 +339,60 @@ body {
     table#attendence {
         height: 50vh;
     }
+    body {
+        padding-top: 50px;
+    }
 }
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (-webkit-min-device-pixel-ratio: 1) {
-#profile1 {
-    width: 300px;
-}
-#profile2 {
-    width: 300px;
-}
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 1) {
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    #profile1 {
+        width: 300px;
+    }
+    #profile2 {
+        width: 300px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    .col-xs-12 {
+        width: auto !important;
+    }
+    #popupContainer {
+        height: 50vh;
+    }
+    table#attendence {
+        height: 50vh;
+    }
+}
+
+.calenderButton ul {
+    top: 50px !important;
+    right: 200px;
+    left: auto !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.ui-scrollfix {
+    position: fixed;
+    top: 90px;
+}
+
+md-input-container.popUpIn {
+    margin: auto !important;
+    width: 50%;
+}
+
+md-input-container.popUp {
+    margin: auto !important;
+    width: auto;
+}
+
+#block {
+    font-size: 17px;
+}
+.dropdown-menu>li>a:hover{
+    background-color: transparent;
 }

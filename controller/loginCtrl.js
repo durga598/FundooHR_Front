@@ -1,11 +1,20 @@
-angular.module('mainApp').controller('LoginCtrl', function ($scope, $state,$auth) {
+angular.module('mainApp').controller('LoginCtrl', function ($scope, $state, $auth, $rootScope) {
 
-  var config = {method: 'POST',url: 'http://192.168.0.9:3000/login'};
+  var config = {
+    method: 'POST',
+    url: 'http://192.168.0.17:3000/login'
+  };
+  $scope.emailFormat = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+  $scope.passwordFormat = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
   $scope.login = function () {
-    $auth.login($scope.user,config)
+    localStorage.setItem("email", $scope.user.emailId);
+    $rootScope.email = localStorage.getItem("email");
+    $rootScope.name = $rootScope.email.split("@")[0];
+    console.log($rootScope.email);
+    $auth.login($scope.user, config)
       .then(function (data) {
-         console.log(data);
-          $state.go('home.DashBoard');
+        console.log(data);
+        $state.go('home.DashBoard');
         // $location.path('/');
       })
       .catch(function (error) {
