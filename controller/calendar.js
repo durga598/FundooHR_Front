@@ -5,11 +5,13 @@
  * @controller : AttendenceCtrl to control calendar
  */
 
-angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, $rootScope, $mdDialog, restService) {
-
+angular.module('mainApp').controller("AttendenceCtrl", function ($scope,$stateParams, $http, $rootScope, $mdDialog, restService) {
+$scope.portfolioId = $stateParams.portfolioId;
+    $rootScope.profileId = $scope.portfolioId;
     $scope.day = moment();
     $rootScope.attendanceData = [];
     $rootScope.attendance = [];
+    $scope.weekDay = ["Sun", "Mon","Tue","Wed","Thu","Fri","Sat"];
     /**
      * variable attendanceData to store attendance of employee from API
      * variable token to store satellizer authenticate token
@@ -36,6 +38,8 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         var promise = restService.getRequest('readEmployeeMonthlyAttendance', config, query);
         promise.then(function (data) {
             $scope.attendance = data.data.attendanceData;
+            $rootScope.empdetails = data.data.employeeData;
+            console.log($rootScope.empdetails);
             $scope.loaderEnable = false;
         });
 
@@ -45,10 +49,7 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
     /**
      * function used to mark the date according to status
      */
-    var i = 0;
     $scope.checkAttend = function (day) {
-        
-              console.log(i++);
         var todayDate = moment();
         $scope.markedStatus = "";
         /**

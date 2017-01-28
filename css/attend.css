@@ -27,6 +27,11 @@ table#attendence {
     table-layout: fixed;
 }
 
+table#attendence tr:first-child td {
+    border-bottom-color: rgba(111, 184, 217, 1);
+    border-bottom-width: 2px;
+}
+
 table#attendence td,
 table#attendence th {
     opacity: 100;
@@ -159,6 +164,10 @@ md-backdrop {
     font-size: 20px;
 }
 
+.weekDay {
+    text-align: center;
+}
+
 .dropdown-menu li {
     padding: 5px;
 }
@@ -274,8 +283,8 @@ body {
 }
 
 #menuBar {
-    color: white;
-    right: 15;
+    color: red;
+    right: 25;
     position: absolute;
     float: right;
     font-size: 25px;
@@ -308,6 +317,9 @@ body {
     table#attendence,
     #popupContainer {
         width: 90vw;
+    }
+    table#attendence tr:first-child {
+        font-size: 15px;
     }
     .dayNum {
         font-size: 16px;
@@ -351,13 +363,13 @@ body {
     #profile2 {
         width: 300px;
     }
-    calendar{
+    calendar {
         float: right;
     }
-    .profileImg{
+    .profileImg {
         text-align: center;
     }
-    .profileName{
+    .profileName {
         text-align: center;
     }
 }
@@ -402,21 +414,24 @@ md-input-container.popUp {
 #block {
     font-size: 17px;
 }
-.dropdown-menu>li>a:hover{
+
+.dropdown-menu>li>a:hover {
     background-color: transparent;
 }
- @media only screen and (min-device-width: 1024px) and (max-device-width: 1250px) {
-      #profile2 {
-    height: 160px;
-    width: 300px;
-    margin-left: 15px;
-}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1250px) {
+    #profile2 {
+        height: 160px;
+        width: 300px;
+        margin-left: 15px;
     }
-@media only screen and (min-device-width: 1000px){
-calendar{
-    /*float: right;*/
 }
-#profile2 {
-    width: 300px;
-}
+
+@media only screen and (min-device-width: 1000px) {
+    calendar {
+        /*float: right;*/
+    }
+    #profile2 {
+        width: 300px;
+    }
 }

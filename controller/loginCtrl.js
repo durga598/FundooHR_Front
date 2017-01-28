@@ -8,7 +8,7 @@ angular.module('mainApp').controller('LoginCtrl', function ($scope, $state, $aut
 
   var config = {
     method: 'POST',
-    url: 'http://192.168.0.6:3000/login'
+    url: 'http://192.168.0.62:3000/login'
   };
 
   /**

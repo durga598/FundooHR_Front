@@ -40,6 +40,7 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                 //**Loads when previous function called for previous month**//
                 else if (scope.called === 1) {
                     var previous = scope.month.clone();
+                    // console.log(scope.month.month());
                     _removeTime(previous.month(previous.month() - 1).date(1));
                     scope.month.month(scope.month.month() - 1);
                     _buildMonth(scope, previous, scope.month);
@@ -113,6 +114,8 @@ if(day.status.attendanceStatus != undefined){
 
     //Build month with array of weeks
     function _buildMonth(scope, start, month) {
+        console.log(month);
+        console.log(start);
         scope.weeks = [];
         var done = false,
             date = start.clone(),

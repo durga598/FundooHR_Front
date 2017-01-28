@@ -10,18 +10,10 @@
         <span class="dateShow">{{month.format("MMMM, YYYY")}}</span>
         <i class="fa fa-caret-right fa-lg" ng-click="tableform.$visible||next()" style="font-size:25px;"></i>
     </div>
-    <div class="week names">
-    <span class="day">Sun</span>
-    <span class="day">Mon</span>
-    <span class="day">Tue</span>
-    <span class="day">Wed</span>
-    <span class="day">Thu</span>
-    <span class="day">Fri</span>
-    <span class="day">Sat</span>
-</div>
     <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
         <table id="attendence">
             <tbody>
+                <tr class="weekDay"><td ng-repeat="x in weekDay">{{x}}</td></tr>
                 <tr ng-if="loaderEnable==true"><td><div class="loader"></div></td></tr>
                 <tr ng-if="loaderEnable==false" class="week" ng-repeat="week in weeks">
                     <td class="day" e-form="tableform" ng-repeat="day in week.days" style="width:14.285%">
