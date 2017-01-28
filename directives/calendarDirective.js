@@ -1,3 +1,9 @@
+/**
+ * @fileName:calendarDirective.js
+ * @createBy:Durga
+ * @module ng-app: mainApp
+ * @directive : calendar to control calendar
+ */
 angular.module('mainApp').directive("calendar", function ($rootScope, $http, $mdDialog) {
     return {
         restrict: "E",
@@ -44,53 +50,31 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
 
             //show dialog according to attendance status
             scope.showAlert = function (ev, day) {
-
+if(day.status.attendanceStatus != undefined){
                 //show dialog for attendance status Present
-                if (day.status.attendanceStatus === "Present") {
+                $mdDialog.show({
+                    controller: function (scope) {
+                        if (day.status.attendanceStatus === "Present") {
+                            scope.showPopUp = true;
+                            scope.punchIn = day.status.punchIn;
+                            scope.punchOut = day.status.punchOut;
+                        } else {
+                            scope.showPopUp = false;
+                            scope.reason = day.status.reason;
+                        }
 
-                    $mdDialog.show({
-                            controller: function (scope) {
-                                scope.punchIn = day.status.punchIn;
-                                scope.punchOut = day.status.punchOut;
-                                scope.cancel = function () {
-                                    $mdDialog.cancel();
+                        scope.cancel = function () {
+                            $mdDialog.cancel();
+                        }
+                    },
+                    templateUrl: 'partials/presentPopUp.html',
+                    parent: angular.element(document.querySelector('#popupContainer')),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
+                    disableParentScroll: false
 
-                                }
-                            },
-                            templateUrl: 'partials/presentPopUp.html',
-                            parent: angular.element(document.querySelector('#popupContainer')),
-                            targetEvent: ev,
-                            clickOutsideToClose: true,
-                            disableParentScroll: false
-
-                        })
-                        .then(function (answer) {
-                            scope.status = 'You said the information was "' + answer + '".';
-                        }, function () {
-                            scope.status = 'You cancelled the dialog.';
-                        });
-
-                }
-                //show dialog for attendance status Leave or CompLeave
-                else if (day.status.attendanceStatus === "Leave" || day.status.attendanceStatus === "CompLeave") {
-
-                    $mdDialog.show({
-                            controller: function (scope) {
-                                //console.log("Called ", day);
-                                scope.reason = day.status.reason;
-                                scope.cancel = function () {
-                                    $mdDialog.cancel();
-                                }
-                            },
-                            templateUrl: 'partials/absentPopUp.html',
-                            parent: angular.element(document.querySelector('#popupContainer')),
-                            targetEvent: ev,
-                            clickOutsideToClose: true,
-                            disableParentScroll: false
-
-                        })
-                        .then(function (answer) {}, function () {});
-                }
+                })
+}
             };
 
             // scope.select = function (day) {
@@ -115,8 +99,6 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
             };
 
             scope.reload = function () {
-                console.log("called");
-
                 scope.called = 3;
                 scope.readData(scope.timeStampData);
             }
@@ -180,7 +162,6 @@ angular.module('mainApp').directive("calendar", function ($rootScope, $http, $md
                     });
                 else
                     days.push({});
-
                 date = date.clone();
                 date.add(1, "d");
             }

@@ -1,24 +1,28 @@
+/**
+ * @fileName:profileCtrl.js
+ * @createBy:Durga
+ * @module ng-app: mainApp
+ * @controller : ProfileCtrl to control profile data
+ */
 angular.module('mainApp').controller('ProfileCtrl', function ($scope, $http, $rootScope, $stateParams, $state, restService) {
 
+    /**
+     * @var portfolioId : store engineer Id
+     * @var empdetails : stores data according to engineerId
+     */
     $scope.portfolioId = $stateParams.portfolioId;
     $rootScope.profileId = $scope.portfolioId;
     $rootScope.empdetails = {};
 
     var token = localStorage.getItem('satellizer_token');
     var query = {
-        token: token,
-
+        engineerId : $scope.portfolioId
     }
-    var promise = restService.getRequest('searchEmployeeByName', query);
+    var config = {
+        'x-token': token
+    };
+    var promise = restService.getRequest('readEmployeeProfileData',config, query);
     promise.then(function (data) {
-        angular.forEach(data.data.employeeList, function (value, key) {
-            if (value.engineerId == $scope.portfolioId) {
-                $rootScope.empdetails = value;
-            }
-
-        });
-        // console.log($scope.empdetails);
+        $rootScope.empdetails = data.data.employeeData;
     });
-
-
 });

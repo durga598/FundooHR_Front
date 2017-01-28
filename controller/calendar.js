@@ -1,28 +1,39 @@
+/**
+ * @fileName:calendar.js
+ * @createBy:Durga
+ * @module ng-app: mainApp
+ * @controller : AttendenceCtrl to control calendar
+ */
+
 angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, $rootScope, $mdDialog, restService) {
+
+    $scope.day = moment();
+    $rootScope.attendanceData = [];
+    $rootScope.attendance = [];
     /**
      * variable attendanceData to store attendance of employee from API
      * variable token to store satellizer authenticate token
      */
-        // console.log($rootScope.profileId);
-        // console.log($rootScope.empdetails);
-    $scope.day = moment();
-    $rootScope.attendanceData = [];
-    $rootScope.attendance = [];
     var token = localStorage.getItem('satellizer_token');
     var engineerId = $rootScope.profileId;
 
     /**
+     * @function readData
+     * @param timeStamp
      * function to read attendance data with parameter timeStamp of date object 
      */
 
     $scope.readData = function (timeStamp) {
+
         $scope.timeStampData = timeStamp;
         var query = {
-            token: token,
             engineerId: engineerId,
             timeStamp: timeStamp
         }
-        var promise = restService.getRequest('readEmployeeMonthlyAttendance', query);
+        var config = {
+            'x-token': token
+        };
+        var promise = restService.getRequest('readEmployeeMonthlyAttendance', config, query);
         promise.then(function (data) {
             $scope.attendance = data.data.attendanceData;
             $scope.loaderEnable = false;
@@ -34,7 +45,10 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
     /**
      * function used to mark the date according to status
      */
+    var i = 0;
     $scope.checkAttend = function (day) {
+        
+              console.log(i++);
         var todayDate = moment();
         $scope.markedStatus = "";
         /**
@@ -73,11 +87,19 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
             preserveScope: true,
             disableParentScroll: false,
             controller: function ($scope) {
+                /**
+                 * Checks attendanceStatus: if Present then shows input: inTime & outTime
+                 * if leave/CompLeave shows input : reason
+                 */
                 if (attendanceStatus === "Present") {
                     $scope.showPrompt = true;
                 } else {
                     $scope.showPrompt = false;
                 }
+
+                /**
+                 * @function save : postData with param to API
+                 */
 
                 $scope.save = function () {
                     if (attendanceStatus === "Present") {
@@ -91,6 +113,11 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                     $scope.cancel();
 
                 }
+
+                /**
+                 * @function cancel : to close dialog
+                 * reset all input value to null
+                 */
                 $scope.cancel = function () {
                     $mdDialog.cancel();
                     $scope.punchIn = null;
@@ -102,9 +129,23 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
 
     };
 
+    /**
+     * @function postData : @param
+     * token : satellizer token
+     * timeStamp : timeStamp data when function save called
+     * engineerId : engineerId
+     * attendanceStatus : Present/leave/CompLeave
+     * markedStatus : boolean
+     * punchIn : in time
+     * punchOut : out time
+     * reason : reason for leave
+     */
+
     function postData(token, timeStamp, engineerId, attendanceStatus, markedStatus, punchIn, punchOut, reason) {
+        var config = {
+            'x-token': token
+        };
         obj = {};
-        obj["token"] = token;
         obj["timeStamp"] = timeStamp * 1000;
         obj["engineerId"] = engineerId;
         obj["attendanceStatus"] = attendanceStatus;
@@ -113,11 +154,16 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
         obj["punchOut"] = getTime(punchOut);
         obj["reason"] = reason;
 
-        var promise = restService.postRequest('createEmployeeDayAttendance', obj);
-        promise.then(function (data) {
-        });
+        var promise = restService.postRequest('createEmployeeDayAttendance', config, obj);
+        promise.then(function (data) {});
 
     }
+
+    /**
+     * @function getTime : convert to 12 hour time
+     * @param : date object
+     * return : 12 hour time
+     */
 
     function getTime(date) {
         if (date === "-") {
@@ -135,7 +181,9 @@ angular.module('mainApp').controller("AttendenceCtrl", function ($scope, $http, 
                 return hour + ":" + min + " AM";
             } else if (hour == 12) {
                 return hour + ":" + min + " PM";
-            } else {
+            } else if (hour > 21) {
+                return (hour - 12) + ":" + min + " PM";
+            } else if (hour > 12) {
                 return "0" + (hour - 12) + ":" + min + " PM";
             }
         }

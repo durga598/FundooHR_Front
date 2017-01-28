@@ -344,12 +344,21 @@ body {
     }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+@media (max-width:1000px) and (min-width:768px) {
     #profile1 {
         width: 300px;
     }
     #profile2 {
         width: 300px;
+    }
+    calendar{
+        float: right;
+    }
+    .profileImg{
+        text-align: center;
+    }
+    .profileName{
+        text-align: center;
     }
 }
 
@@ -395,4 +404,19 @@ md-input-container.popUp {
 }
 .dropdown-menu>li>a:hover{
     background-color: transparent;
+}
+ @media only screen and (min-device-width: 1024px) and (max-device-width: 1250px) {
+      #profile2 {
+    height: 160px;
+    width: 300px;
+    margin-left: 15px;
+}
+    }
+@media only screen and (min-device-width: 1000px){
+calendar{
+    /*float: right;*/
+}
+#profile2 {
+    width: 300px;
+}
 }

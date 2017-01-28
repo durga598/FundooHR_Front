@@ -1,18 +1,18 @@
 <div id="main" style="padding-left: 0px;">
     <div class="row" id="profiletable">
-        <div class="col-xs-12 col-lg-3 col-md-3">
+        <div class="col-xs-12 col-lg-3 col-md-3 profileImg">
             <label id="menuBar" style="float:right;font-size:30px;cursor:pointer" onclick="openNav();">&#8942;</label>
             <img src="images/emp2.jpg" alt="{{empdetails.employeeName}}" class="img1 image-responsive" />
         </div>
         <div class="col-xs-12 col-lg-9 col-md-9" id="profilehead">
-            <div>
+            <div class="profileName">
                 <h4 style="color:#3B5372;font-weight:bold;font-family:Ionicons;font-size:20px">
                     {{empdetails.employeeName}}</h4>
                 <h4>
-                    <span style="color:#3B5372;font-weight:bold; ">Id</span> {{empdetails.engineerId}}
+                    <span style="color:#3B5372;font-weight:bold; ">Id</span> {{portfolioId}}
                 </h4>
             </div>
-            <div id="profileDetail">
+            <div id="profileDetail" >
                 <span style="float:left;">
                     <table id="profile1">
 
@@ -44,17 +44,17 @@
 
                         <tr>
                             <td>BL Start Date</td>
-                            <td>2 March 2016</td>
+                            <td>{{empdetails.blStartDate * 1000 | date:'dd MMMM yyyy'}}</td>
 
                         </tr>
                         <tr>
                             <td style="color:#3B5372">Company Start Date</td>
-                            <td>4 June 2016</td>
+                            <td>{{empdetails.companyJoinDate * 1000 | date:'dd MMMM yyyy'}}</td>
 
                         </tr>
                         <tr>
                             <td style="color:#3B5372">Company Leave Date</td>
-                            <td>15 December 2016</td>
+                            <td>{{empdetails.companyLeaveDate * 1000 | date:'dd MMMM yyyy'}}</td>
 
                         </tr>
                         <tr>
@@ -68,8 +68,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-lg-3 col-md-3" id="left-sidebar" >
-            <ul class="sidebar-nav" style="list-style:none;" id="sidepadding" ui-scrollfix="+250">
+        <div class="col-lg-3 col-md-4 col-sm-4" id="left-sidebar" >
+            <ul class="sidebar-nav" style="list-style:none;" id="sidepadding">
                 <li ui-sref-active="active" class="active">
                     <div><a class="anchor" ui-sref=".Attendence"><span><img src="images/.png"></img></span><b>Attendence</b></a></div>
                 </li>
@@ -90,7 +90,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xs-12 col-lg-9 col-md-9">
+        <div class="col-xs-12 col-lg-9 col-md-8 col-sm-8">
             <ui-view> </ui-view>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="cardBox">
     <a ui-sref="home.Profile({ portfolioId:value.engineerId})">
         <div style="float:left;margin: 4%;">
-            <img src="images/emp2.jpg" alt="{{value.employeeName}}" style="max-width: 100px;max-height: 120px;" />
+            <img ng-src="{{value.imageUrl}}" alt="{{value.employeeName}}" style="max-width: 100px;max-height: 120px;" />
         </div>
         <div class="cardData">
             <span>{{value.engineerId}}</span><br>

@@ -2,18 +2,26 @@
     <form ng-cloak>
         <md-dialog-content>
             <div class="md-dialog-content" id="popupStatus">
-                <label style="float:right;position:fixed;margin: -15px;right:20%;">
-               <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
-          </label>
-                <table class="popupTable" width="100%" style="table-layout: fixed">
-                    <tr>
+                <label class="popUpLabel" >
+                <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon></md-button>
+                </label>
+                <table class="popupTable" width="100%" cellpadding="15" style="table-layout: fixed">
+                    <tr ng-if="showPopUp">
                         <td>InTime</td>
                         <td>{{punchIn}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="showPopUp">
                         <td>OutTime</td>
                         <td>{{punchOut}}</td>
+                    </tr>
+                    <tr ng-if="!showPopUp">
+                        <td style="font-weight: bold;">Reason</td>
+                    </tr>
+                    <tr ng-if="!showPopUp">
+                        <td>
+                            <textarea id="textareaReason" readonly>{{reason}}</textarea>
+                        </td>
                     </tr>
                 </table>
             </div>

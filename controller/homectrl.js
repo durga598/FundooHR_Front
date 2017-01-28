@@ -1,3 +1,9 @@
+/**
+ * @fileName:homectrl.js
+ * @createBy:Durga
+ * @module ng-app: mainApp
+ * @controller : HomeCtrl to control home
+ */
 angular.module('mainApp').controller('HomeCtrl', function ($scope, $location, $stateParams, $state, $auth,$rootScope) {
   $scope.isAuth = function () {
     return $auth.isAuthenticated();
